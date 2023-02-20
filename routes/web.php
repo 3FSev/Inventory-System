@@ -40,3 +40,6 @@ Route::delete('items', [ItemsController::class, 'destroy'])->name('items.destroy
 Route::get('employee', function () {
     return view('employee');
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
