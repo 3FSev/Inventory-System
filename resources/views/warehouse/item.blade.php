@@ -1,10 +1,11 @@
-@include('theme.sidebar')
+@include('theme.head')
+@include('theme.topbar')
 <center>
     <div class="card shadow mb-4 col-xs-12 col-md-8 border-bottom-primary">
         <div class="card-header py-3">
-            <h4 class="m-2 font-weight-bold text-primary">Equipmen's Detail</h4>
+            <h4 class="m-2 font-weight-bold text-primary">Equipment's Detail</h4>
         </div>
-        <a href="product.php?action=add" type="button" class="btn btn-primary bg-gradient-primary btn-block"> <i
+        <a href="../items" type="button" class="btn btn-primary bg-gradient-primary btn-block"> <i
                 class="fas fa-flip-horizontal fa-fw fa-share"></i> Back</a>
         <div class="card-body">
             <!--Insert Data here-->
@@ -16,7 +17,7 @@
                 </div>
                 <div class="col-sm-9">
                     <h5>
-                        <br>
+                        {{$item->item_id}}<br>
                     </h5>
                 </div>
             </div>
@@ -28,7 +29,7 @@
                 </div>
                 <div class="col-sm-9">
                     <h5>
-                      <br>
+                        {{$item->item_name}}<br>
                     </h5>
                 </div>
             </div>
@@ -40,7 +41,7 @@
                 </div>
                 <div class="col-sm-9">
                     <h5>
-                      <br>
+                        {{$item->description}}<br>
                     </h5>
                 </div>
             </div>
@@ -52,7 +53,7 @@
                 </div>
                 <div class="col-sm-9">
                     <h5>
-                      <br>
+                        {{$item->price}}<br>
                     </h5>
                 </div>
             </div>
@@ -64,7 +65,7 @@
                 </div>
                 <div class="col-sm-9">
                     <h5>
-                      <br>
+                        {{$item->category}}<br>
                     </h5>
                 </div>
             </div>

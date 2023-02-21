@@ -20,13 +20,7 @@
                         <th>{{$row->name}}</th>
                         <th>{{$row->email}}</th>
                         <th>
-                            <form method="POST" action="">
-                                @csrf
-                                @method('DELETE')
-                                <a href="" class="btn btn-info btn-sm">View</a>
-                                <a href="" class="btn btn-warning btn-sm">Edit</a>
-                                <input type="submit" class="btn btn-danger btn-sm" value="Delete" />
-                            </form>
+                            <a href="" class="btn btn-info btn-sm">View</a>
                         </th>
                     </tr>
                     @endforeach

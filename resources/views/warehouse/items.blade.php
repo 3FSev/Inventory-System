@@ -26,11 +26,11 @@
                         <th>{{$row->quantity}}</th>
                         <th>{{$row->category}}</th>
                         <th>
-                            <form method="POST" action="">
+                            <form method="POST" action="{{route('destroy', $row->item_id)}}">
                                 @csrf
                                 @method('DELETE')
-                                <a href="" class="btn btn-info btn-sm">View</a>
-                                <a href="" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="{{route('show', $row->item_id)}}" class="btn btn-info btn-sm">View</a>
+                                <a href="{{route('edit', $row->item_id)}}" class="btn btn-warning btn-sm">Edit</a>
                                 <input type="submit" class="btn btn-danger btn-sm" value="Delete" />
                             </form>
                         </th>

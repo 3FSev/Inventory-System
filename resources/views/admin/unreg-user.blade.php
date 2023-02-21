@@ -10,42 +10,26 @@
                <thead>
                    <tr>
                        <th>Name</th>
-                       <th>Username</th>
-                       <th>Type</th>
+                       <th>Email</th>
                        <th>Action</th>
                    </tr>
                </thead>
-          <tbody></tbody></table></div>
-            @include('theme.footer')
-
-  <!-- User Account Modal-->
-  <div class="modal fade" id="supplierModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Add User Account</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form role="form" method="post" action="us_transac.php?action=add">
-              
-              <div class="form-group">
-                
-              </div>
-              <div class="form-group">
-                <input class="form-control" placeholder="Username" name="username" required>
-              </div>
-              <div class="form-group">
-                <input type="password" class="form-control" placeholder="Password" name="password" required>
-              </div>
-            <hr>
-            <button type="submit" class="btn btn-success"><i class="fa fa-check fa-fw"></i>Save</button>
-            <button type="reset" class="btn btn-danger"><i class="fa fa-times fa-fw"></i>Reset</button>
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>      
-          </form>  
-        </div>
+          <tbody>
+            @foreach ($user_list as $row)
+                    <tr>
+                        <th>{{$row->name}}</th>
+                        <th>{{$row->email}}</th>
+                        <th>
+                            <form method="POST" action="">
+                                @csrf
+                                @method('DELETE')
+                                <a href="" class="btn btn-success btn-sm">Approved</a>
+                                <input type="submit" class="btn btn-danger btn-sm" value="Delete" />
+                            </form>
+                        </th>
+                    </tr>
+                    @endforeach
+          </tbody>
+        </table>
       </div>
-    </div>
-  </div>
+@include('theme.footer')

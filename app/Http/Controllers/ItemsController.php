@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Items;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ItemsController extends Controller
 {
@@ -18,11 +19,38 @@ class ItemsController extends Controller
         return view('warehouse/employee', compact('users'));
     }
 
-    public function employee(){
-        return view('warehouse/employee');
+    public function store(Request $request){
+        $formField = $request->validate([
+            'item_name' => 'required',
+            'quantity' => 'required',
+            'category' => 'required',
+            'price' => 'required',
+            'description' => 'required'
+        ]);
+
+        Items::create($formField);
+
+        return redirect('items');
     }
 
-    public function store(Request $request){
+    public function destroy($item_id){
+        Items::where('item_id','=',$item_id)->delete();
+        return redirect('items');
+    }
+
+    public function show($item_id){
+        return view('warehouse/item', [
+            'item' => Items::find($item_id)
+        ]);
+    }
+
+    public function edit($item_id){
+        return view('warehouse/item_edit', [
+            'item' => Items::find($item_id)
+        ]);
+    }
+
+    public function update(Request $request){
         $formField = $request->validate([
             'item_name' => 'required',
             'quantity' => 'required',
