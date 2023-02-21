@@ -26,7 +26,7 @@
                         <th>{{$row->quantity}}</th>
                         <th>{{$row->category}}</th>
                         <th>
-                            <form method="POST" action="{{route('items.destroy', '$row->item_id')}}">
+                            <form method="POST" action="">
                                 @csrf
                                 @method('DELETE')
                                 <a href="" class="btn btn-info btn-sm">View</a>
@@ -70,6 +70,10 @@
                             <option value="Communication Equipment">Communication Equipment</option>
                             <option value="Others">Others</option>
                         </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" min="1" max="999999999" class="form-control" placeholder="Price"
+                            name="price" required>
                     </div>
                     <div class="form-group">
                         <textarea rows="5" cols="50" class="form-control" placeholder="Description"

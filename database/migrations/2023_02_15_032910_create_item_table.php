@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string("item_name");
             $table->integer("quantity");
             $table->string("category");
+            $table->integer('price');
+            $table->integer('amount');
             $table->mediumText("description");
             $table->timestamps();
         });

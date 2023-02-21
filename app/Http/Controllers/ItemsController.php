@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Items;
 use Illuminate\Http\Request;
 
@@ -9,7 +10,16 @@ class ItemsController extends Controller
 {
     public function index(){
         $item_list = items::all();
-        return view('items', compact('item_list'));
+        return view('warehouse/items', compact('item_list'));
+    }
+
+    public function users(){
+        $users = User::all();
+        return view('warehouse/employee', compact('users'));
+    }
+
+    public function employee(){
+        return view('warehouse/employee');
     }
 
     public function store(Request $request){
@@ -17,6 +27,7 @@ class ItemsController extends Controller
             'item_name' => 'required',
             'quantity' => 'required',
             'category' => 'required',
+            'price' => 'required',
             'description' => 'required'
         ]);
 
@@ -25,7 +36,4 @@ class ItemsController extends Controller
         return redirect('items');
     }
 
-    public function destroy(Items $items){
-        return $items;
-    }
 }

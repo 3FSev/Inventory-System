@@ -15,31 +15,35 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
+Route::middleware(['auth','admin-user'])->group(function(){
+    Route::get('admin', function () {
+        return view('admin/admin-index');
+    });
+    
+    Route::get('reg-user', function () {
+        return view('admin/reg-user');
+    });
+    
+    Route::get('unreg-user', function () {
+        return view('admin/unreg-user');
+    });
 });
 
-Route::get('admin', function () {
-    return view('admin-index');
+Route::middleware(['auth','warehouse-user'])->group(function(){
+    //Items Route
+    Route::get('/', function () {
+        return view('warehouse/index');
+    });
+    Route::get('items', [ItemsController::class, 'index']);
+    Route::get('employee', [ItemsController::class, 'users']);
+    Route::post('items', [ItemsController::class, 'store']);
 });
 
-Route::get('reg-user', function () {
-    return view('reg-user');
+
+Route::middleware('auth')->group(function(){
+    Route::get('employee-index', function(){
+        return view('employee/employee-index');
+    });
 });
 
-Route::get('unreg-user', function () {
-    return view('unreg-user');
-});
-
-Route::get('items', [ItemsController::class, 'index']);
-
-Route::post('items', [ItemsController::class, 'store']);
-
-Route::delete('items', [ItemsController::class, 'destroy'])->name('items.destroy');;
-
-Route::get('employee', function () {
-    return view('employee');
-});
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -3,7 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use PHPUnit\Framework\Attributes\After;
 
 return new class extends Migration
 {
@@ -13,8 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('items', function (Blueprint $table) {
-            $table->integer('price')->after('quantity');
-            $table->integer('amount')->after('amount');
+            $table->dropColumn('amount');
         });
     }
 
@@ -24,7 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('items', function (Blueprint $table) {
-            //
+            $table->integer('amount');
         });
     }
 };
