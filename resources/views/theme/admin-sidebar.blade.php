@@ -80,15 +80,15 @@
       </div>
       <!-- Tables Buttons -->
       <li class="nav-item">
-        <a class="nav-link" href="reg-user">
+        <a class="nav-link" href="ver">
           <i class="fas fa-fw fa-user"></i>
-          <span>Registered Accounts</span></a>
+          <span>Verified Accounts</span></a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="unreg-user">
+        <a class="nav-link" href="unv">
           <i class="fas fa-fw fa-user"></i>
-          <span>Unregistered Accounts</span></a>
+          <span>Unverified Accounts</span></a>
       </li>
 
       <!-- Divider -->

@@ -16,16 +16,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['auth','admin-user'])->group(function(){
+Route::middleware(['auth','unverified'])->group(function(){
+    Route::get('home', function() {
+        return view('home');
+    });
+});
+
+Route::middleware(['auth','admin-user','status'])->group(function(){
     Route::get('admin', function () {
         return view('admin/admin-index');
     });
-    
-    Route::get('reg-user', function () {
-        return view('admin/reg-user');
-    });
-    
-    Route::get('unreg-user', [AdminController::class, 'unreg']);
+    Route::get('ver', [AdminController::class, 'ver']);
+    Route::get('unv', [AdminController::class, 'unv']);
 });
 
 Route::middleware(['auth','warehouse-user'])->group(function(){

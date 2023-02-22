@@ -51,7 +51,7 @@
       <li class="nav-item">
         <a class="nav-link" href="">
           <i class="fas fa-fw fa-table"></i>
-          <span>Accountability</span></a>
+          <span>Issuance</span></a>
       </li>
 
       <!-- Divider -->

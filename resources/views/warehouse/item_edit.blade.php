@@ -8,14 +8,16 @@
         <a href="../items" type="button" class="btn btn-primary bg-gradient-primary">Back</a>
         <div class="card-body">
 
-            <form role="form" method="POST" action="">
+            <form role="form" method="POST" action="{{$item->item_id}}">
+                @csrf
+                @method('')
                 <input type="hidden" name="id" value="" />
                 <div class="form-group row text-left text-warning">
                     <div class="col-sm-3" style="padding-top: 5px;">
                         Item Code:
                     </div>
                     <div class="col-sm-9">
-                        <input class="form-control" placeholder="Product Code" name="prodcode"
+                        <input class="form-control" name="item_id"
                             value="{{$item->item_id}}" readonly>
                     </div>
                 </div>
@@ -24,7 +26,25 @@
                         Item Name:
                     </div>
                     <div class="col-sm-9">
-                        <input class="form-control" placeholder="Product Name" name="prodname" value="{{$item->item_name}}"
+                        <input class="form-control" name="item_name" value="{{$item->item_name}}"
+                            required>
+                    </div>
+                </div>
+                <div class="form-group row text-left text-warning">
+                    <div class="col-sm-3" style="padding-top: 5px;">
+                        Quantity:
+                    </div>
+                    <div class="col-sm-9">
+                        <input class="form-control" name="quantity" value="{{$item->quantity}}"
+                            required>
+                    </div>
+                </div>
+                <div class="form-group row text-left text-warning">
+                    <div class="col-sm-3" style="padding-top: 5px;">
+                        Price:
+                    </div>
+                    <div class="col-sm-9">
+                        <input class="form-control" name="prodname" value="{{$item->price}}"
                             required>
                     </div>
                 </div>

@@ -50,18 +50,11 @@ class ItemsController extends Controller
         ]);
     }
 
-    public function update(Request $request){
-        $formField = $request->validate([
-            'item_name' => 'required',
-            'quantity' => 'required',
-            'category' => 'required',
-            'price' => 'required',
-            'description' => 'required'
-        ]);
-
-        Items::create($formField);
-
-        return redirect('items');
+    public function update(Request $request, $item_id){
+        $item = Items::find($item_id);
+        $input = $request->all();
+        $item->update($input);
+        return redirect('items')->with('flash_message', 'Item updated;');
     }
 
 }
