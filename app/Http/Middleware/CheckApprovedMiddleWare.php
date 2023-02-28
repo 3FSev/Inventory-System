@@ -4,10 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class StatusMiddleware
+class CheckApprovedMiddleWare
 {
     /**
      * Handle an incoming request.
@@ -16,11 +15,10 @@ class StatusMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::user()->status == '1'){
-            return $next($request);
+        if (!auth()->user()->approved_at) {
+            return redirect('approval');
         }
-        else{
-            return redirect('home')->with('message','Please wait for admin verification');
-        }
+
+        return $next($request);
     }
 }

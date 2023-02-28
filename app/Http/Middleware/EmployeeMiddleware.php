@@ -16,10 +16,10 @@ class EmployeeMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::check() && Auth::user()->role == '0'){
+        if(Auth::check() && Auth::user()->role_id == '3'){
             return $next($request);
         }
-        elseif(Auth::check() && Auth::user()->role == '1'){
+        elseif(Auth::check() && Auth::user()->role_id == '2'){
             return redirect('/');
         }
         else{

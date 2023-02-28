@@ -66,7 +66,7 @@ class Kernel extends HttpKernel
         'warehouse-user' => \App\Http\Middleware\WarehouseMiddleware::class,
         'admin-user' => \App\Http\Middleware\AdminMiddleware::class,
         'employee-user' => \App\Http\Middleware\EmployeeMiddleware::class,
-        'status' => \App\Http\Middleware\StatusMiddleware::class,
-        'unverified' => \App\Http\Middleware\UnverifiedUserMiddleWare::class,
+        'approved' => \App\Http\Middleware\CheckApprovedMiddleWare::class,
+        'ver' => \App\Http\Middleware\UnverifiedUserMiddleWare::class,
     ];
 }

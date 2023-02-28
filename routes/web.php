@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ItemsController;
+use App\Http\Controllers\UserController;
 use App\Models\Items;
 use Illuminate\Support\Facades\Route;
 
@@ -16,18 +17,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['auth','unverified'])->group(function(){
-    Route::get('home', function() {
-        return view('home');
+Route::middleware(['auth','ver'])->group(function(){
+    Route::get('approval', function() {
+        return view('approval');
     });
 });
 
-Route::middleware(['auth','admin-user','status'])->group(function(){
+Route::middleware(['auth','admin-user'])->group(function(){
     Route::get('admin', function () {
         return view('admin/admin-index');
     });
-    Route::get('ver', [AdminController::class, 'ver']);
-    Route::get('unv', [AdminController::class, 'unv']);
+    Route::get('ver', [UserController::class, 'verified']);
+    Route::get('unv', [UserController::class, 'index'])->name('admin.users.index');
+    Route::get('unv/{user_id}/approve', [UserController::class, 'approve'])->name('admin.users.approve');
 });
 
 Route::middleware(['auth','warehouse-user'])->group(function(){
@@ -42,10 +44,11 @@ Route::middleware(['auth','warehouse-user'])->group(function(){
     Route::get('show/{item_id}', [ItemsController::class, 'show'])->name('show');
     Route::get('item_edit/{item_id}', [ItemsController::class, 'edit'])->name('edit');
     Route::post('item_edit/{item_id}', [ItemsController::class, 'update']);
+    Route::get('issuance', [ItemsController::class, 'issuance']);
 });
 
 
-Route::middleware(['auth','employee-user'])->group(function(){
+Route::middleware(['auth','employee-user','approved'])->group(function(){
     Route::get('employee-index', function(){
         return view('employee/employee-index');
     });

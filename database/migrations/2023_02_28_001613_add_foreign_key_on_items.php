@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('items', function (Blueprint $table) {
-            $table->id("item_id");
-            $table->string("item_name");
-            $table->integer("quantity");
-            $table->integer('price');
-            $table->mediumText("description");
-            $table->timestamps();
+        Schema::table('items', function (Blueprint $table) {
+            $table->unsignedBigInteger('category_id')->after('item_name');
+            $table->foreign('category_id')->references('id')->on('category')->onDelete('cascade');
         });
     }
 
@@ -26,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('item');
+        Schema::table('items', function (Blueprint $table) {
+            $table->dropColumn('category_id');
+        });
     }
 };

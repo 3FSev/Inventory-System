@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('items', function (Blueprint $table) {
-            $table->dropColumn('amount');
+        Schema::table('users', function (Blueprint $table) {
+            $table->timestamp('approved_at')->nullable();
         });
     }
 
@@ -21,8 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('items', function (Blueprint $table) {
-            $table->integer('amount');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('approved_at');
         });
     }
 };

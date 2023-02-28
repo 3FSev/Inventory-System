@@ -20,7 +20,7 @@
                     <tr>
                         <th>{{$row->name}}</th>
                         <th>{{$row->email}}</th>
-                        <th>{{$row->role}}</th>
+                        <th>{{$row->role->name}}</th>
                         <th>
                             <form method="POST" action="">
                                 @csrf

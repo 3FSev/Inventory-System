@@ -10,7 +10,6 @@
 
             <form role="form" method="POST" action="{{$item->item_id}}">
                 @csrf
-                @method('')
                 <input type="hidden" name="id" value="" />
                 <div class="form-group row text-left text-warning">
                     <div class="col-sm-3" style="padding-top: 5px;">

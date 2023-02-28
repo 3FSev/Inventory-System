@@ -24,7 +24,7 @@
                         <th>{{$row->item_id}}</th>
                         <th>{{$row->item_name}}</th>
                         <th>{{$row->quantity}}</th>
-                        <th>{{$row->category}}</th>
+                        <th>{{$row->category->name}}</th>
                         <th>
                             <form method="POST" action="{{route('destroy', $row->item_id)}}">
                                 @csrf
@@ -64,12 +64,7 @@
                             name="quantity" required>
                     </div>
                     <div class="form-group">
-                        <select class="form-control" name="category" required>
-                            <option disabled selected value> -- Select Category -- </option>
-                            <option value="IT Equipment">IT Equipment</option>
-                            <option value="Communication Equipment">Communication Equipment</option>
-                            <option value="Others">Others</option>
-                        </select>
+                        {!! Form::select('category_id', $category, null, ['class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
                         <input type="number" min="1" max="999999999" class="form-control" placeholder="Price"

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Deparment;
+use App\Models\Role;
 use App\Models\User;
 use App\Models\Items;
 use Illuminate\Http\Request;
@@ -11,12 +14,14 @@ class ItemsController extends Controller
 {
     public function index(){
         $item_list = items::all();
-        return view('warehouse/items', compact('item_list'));
+        $category = Category::pluck('name', 'id');
+        return view('warehouse/items', compact('item_list'), ['category' => $category]);
     }
 
     public function users(){
         $users = User::all();
-        return view('warehouse/employee', compact('users'));
+        $dept = Deparment::all();
+        return view('warehouse/employee', compact('users'))->with('dept');
     }
 
     public function store(Request $request){
@@ -55,6 +60,10 @@ class ItemsController extends Controller
         $input = $request->all();
         $item->update($input);
         return redirect('items')->with('flash_message', 'Item updated;');
+    }
+
+    public function issuance(){
+        return view('warehouse/issuance');
     }
 
 }

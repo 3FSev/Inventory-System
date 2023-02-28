@@ -11,6 +11,7 @@
                         <tr>
                           <th>Name</th>
                           <th>Email</th>
+                          <th>Department</th>
                           <th>Action</th>
                         </tr>
                      </thead>
@@ -19,6 +20,7 @@
                     <tr>
                         <th>{{$row->name}}</th>
                         <th>{{$row->email}}</th>
+                        <th>{{$users->department->name}}</th>
                         <th>
                             <a href="" class="btn btn-info btn-sm">View</a>
                         </th>

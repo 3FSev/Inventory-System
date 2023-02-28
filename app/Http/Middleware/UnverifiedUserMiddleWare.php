@@ -16,11 +16,10 @@ class UnverifiedUserMiddleWare
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::user()->status == '0'){
-            return $next($request);
-        }
-        else{
+        if (auth()->user()->approved_at) {
             return redirect('/');
         }
+        
+        return $next($request);
     }
 }
