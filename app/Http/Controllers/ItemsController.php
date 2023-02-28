@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use App\Models\Deparment;
-use App\Models\Role;
 use App\Models\User;
 use App\Models\Items;
+use App\Models\Category;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class ItemsController extends Controller
 {
@@ -19,16 +16,15 @@ class ItemsController extends Controller
     }
 
     public function users(){
-        $users = User::all();
-        $dept = Deparment::all();
-        return view('warehouse/employee', compact('users'))->with('dept');
+        $users = User::with('role', 'department')->get();
+        return view('warehouse/employee', compact('users'));
     }
 
     public function store(Request $request){
         $formField = $request->validate([
             'item_name' => 'required',
             'quantity' => 'required',
-            'category' => 'required',
+            'category_id' => 'required',
             'price' => 'required',
             'description' => 'required'
         ]);
@@ -50,8 +46,10 @@ class ItemsController extends Controller
     }
 
     public function edit($item_id){
+        $category = Category::pluck('name', 'id');
         return view('warehouse/item_edit', [
-            'item' => Items::find($item_id)
+            'item' => Items::find($item_id),
+            'category' => $category
         ]);
     }
 

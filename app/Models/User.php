@@ -5,7 +5,6 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Attribute;
 use App\Models\Role;
-use App\Models\Deparment;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -23,7 +22,6 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'dept_id',
         'password',
         'approved_at'
     ];
@@ -54,6 +52,6 @@ class User extends Authenticatable
 
     public function department()
     {
-        return $this->belongsTo(Deparment::class);
+        return $this->belongsTo(Department::class);
     }
 }

@@ -31,6 +31,14 @@
                 </div>
                 <div class="form-group row text-left text-warning">
                     <div class="col-sm-3" style="padding-top: 5px;">
+                        Category:
+                    </div>
+                    <div class="col-sm-9">
+                        {!! Form::select('category_id', $category, null, ['class' => 'form-control']) !!}
+                    </div>
+                </div>
+                <div class="form-group row text-left text-warning">
+                    <div class="col-sm-3" style="padding-top: 5px;">
                         Quantity:
                     </div>
                     <div class="col-sm-9">

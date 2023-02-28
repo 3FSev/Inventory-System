@@ -65,7 +65,7 @@
                 </div>
                 <div class="col-sm-9">
                     <h5>
-                        {{$item->category}}<br>
+                        {{$item->category->name}}<br>
                     </h5>
                 </div>
             </div>
