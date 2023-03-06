@@ -10,12 +10,33 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>WIV #</th>
-                        <th>Employee #</th>
-                        <th>Item #</th>
+                        <th>WIV Number</th>
+                        <th>User Name</th>
+                        <th>Item Name</th>
+                        <th>Quantity</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($wiv as $wiv)
+                    <tr>
+                        <th>{{ $wiv->id }}</th>
+                        <th>{{ $wiv->users->name }}</th>
+                        <th>
+                            <ul>
+                                @foreach($wiv->items as $item)
+                                <li>
+                                    {{($item->name)}}
+                                </li>
+                                @endforeach
+                            </ul>
+                        </th>
+                        <th>
+                            @foreach($wiv->items as $item)
+                                {{($item->pivot->quantity)}}<br>
+                            @endforeach
+                        </th>
+                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -63,7 +84,7 @@
                                     <td>
                                         <select name="item[]" class="form-control">
                                             @foreach ($items as $item)
-                                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
                                             @endforeach
                                         </select>
                                     </td>
@@ -88,4 +109,3 @@
         </div>
     </div>
 </div>
-

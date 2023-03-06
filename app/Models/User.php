@@ -54,4 +54,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Department::class, 'dept_id');
     }
+
+    public function wivs()
+    {
+        return $this->belongsTo(Wiv::class);
+    }
 }

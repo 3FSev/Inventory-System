@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Wiv;
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -25,6 +26,6 @@ class Items extends Model
 
     public function wivs()
     {
-        return $this->belongsToMany(Item::class, 'item_wiv', 'wiv_id', 'item_id')->withPivot('quantity');
+        return $this->belongsToMany(Wiv::class, 'item_wiv', 'wiv_id', 'item_id')->withPivot('quantity');
     }
 }
