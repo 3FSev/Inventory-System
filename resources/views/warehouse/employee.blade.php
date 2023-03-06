@@ -20,7 +20,7 @@
                     <tr>
                         <th>{{$row->name}}</th>
                         <th>{{$row->email}}</th>
-                        <th>{{$row->department}}</th>
+                        <th>{{$row->department->name}}</th>
                         <th>
                             <a href="" class="btn btn-info btn-sm">View</a>
                         </th>

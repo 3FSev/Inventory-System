@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('roles', function (Blueprint $table) {
-            Schema::dropIfExists('roles');
-        });
-
-        Schema::create('roles', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
+        Schema::table('wiv', function (Blueprint $table) {
+            $table->integer('jv')->nullable()->change();
         });
     }
 
@@ -26,8 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('roles', function (Blueprint $table) {
-                Schema::dropIfExists('roles');
+        Schema::table('wiv', function (Blueprint $table) {
+            $table->integer('jv')->change();
         });
     }
 };

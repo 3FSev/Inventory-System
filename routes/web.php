@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\IssuanceController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\UserController;
 use App\Models\Items;
@@ -40,11 +41,12 @@ Route::middleware(['auth','warehouse-user'])->group(function(){
     Route::get('items', [ItemsController::class, 'index']);
     Route::get('employee', [ItemsController::class, 'users']);
     Route::post('items', [ItemsController::class, 'store']);
-    Route::delete('items/{item_id}', [ItemsController::class, 'destroy'])->name('destroy');
-    Route::get('show/{item_id}', [ItemsController::class, 'show'])->name('show');
-    Route::get('item_edit/{item_id}', [ItemsController::class, 'edit'])->name('edit');
-    Route::post('item_edit/{item_id}', [ItemsController::class, 'update']);
-    Route::get('issuance', [ItemsController::class, 'issuance']);
+    Route::delete('items/{id}', [ItemsController::class, 'destroy'])->name('destroy');
+    Route::get('show/{id}', [ItemsController::class, 'show'])->name('show');
+    Route::get('item_edit/{id}', [ItemsController::class, 'edit'])->name('edit');
+    Route::post('item_edit/{id}', [ItemsController::class, 'update']);
+    Route::get('issuance', [IssuanceController::class, 'show'])->name('issuance.show');
+    Route::post('issuance', [IssuanceController::class, 'store'])->name('issuance.store');
 });
 
 

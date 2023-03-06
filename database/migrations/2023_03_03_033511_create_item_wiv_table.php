@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('roles', function (Blueprint $table) {
-            Schema::dropIfExists('roles');
-        });
-
-        Schema::create('roles', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
+        Schema::create('item_wiv', function (Blueprint $table) {
+            $table->foreignId('item_id')->constrained();
+            $table->unsignedBigInteger('wiv_id');
+            $table->foreign('wiv_id')->references('id')->on('wiv')->onDelete('cascade');
+            $table->unsignedInteger('quantity')->default(1);
         });
     }
 
@@ -26,8 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('roles', function (Blueprint $table) {
-                Schema::dropIfExists('roles');
-        });
+        Schema::dropIfExists('item_wiv');
     }
 };

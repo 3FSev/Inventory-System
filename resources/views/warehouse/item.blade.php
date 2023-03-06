@@ -17,7 +17,7 @@
                 </div>
                 <div class="col-sm-9">
                     <h5>
-                        {{$item->item_id}}<br>
+                        {{$item->id}}<br>
                     </h5>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                 </div>
                 <div class="col-sm-9">
                     <h5>
-                        {{$item->item_name}}<br>
+                        {{$item->name}}<br>
                     </h5>
                 </div>
             </div>

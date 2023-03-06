@@ -4,7 +4,10 @@
     <div class="card-header py-3">
         <h4 class="m-2 font-weight-bold text-primary">Items&nbsp;<a href="#" data-toggle="modal" data-target="#aModal"
                 type="button" class="btn btn-primary bg-gradient-primary" style="border-radius: 0px;"><i
-                    class="fas fa-fw fa-plus"></i></a></h4>
+                    class="fas fa-fw fa-plus">
+                </i>
+            </a>
+        </h4>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -21,17 +24,17 @@
                 <tbody>
                     @foreach ($item_list as $row)
                     <tr>
-                        <th>{{$row->item_id}}</th>
-                        <th>{{$row->item_name}}</th>
+                        <th>{{$row->id}}</th>
+                        <th>{{$row->name}}</th>
                         <th>{{$row->quantity}}</th>
                         <th>{{$row->category->name}}</th>
                         <th>
-                            <form method="POST" action="{{route('destroy', $row->item_id)}}">
+                            <form method="POST" action="{{route('destroy', $row->id)}}">
                                 @csrf
                                 @method('DELETE')
-                                <a href="{{route('show', $row->item_id)}}" class="btn btn-info btn-sm">View</a>
-                                <a href="{{route('edit', $row->item_id)}}" class="btn btn-warning btn-sm">Edit</a>
-                                <input type="submit" class="btn btn-danger btn-sm" value="Delete" />
+                                <a href="{{route('show', $row->id)}}" class="btn btn-info btn-sm">View</a>
+                                <a href="{{route('edit', $row->id)}}" class="btn btn-warning btn-sm">Edit</a>
+                                <input onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger btn-sm" value="Delete" />
                             </form>
                         </th>
                     </tr>
@@ -57,10 +60,10 @@
                 <form role="form" method="POST" action="/items">
                     @csrf
                     <div class="form-group">
-                        <input class="form-control" placeholder="Name" name="item_name" required>
+                        <input class="form-control" placeholder="Name" name="name" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" min="1" max="999999999" class="form-control" placeholder="Quantity"
+                        <input type="number" min="1" max="999999999" class="form-control" placeholder="Quantity"
                             name="quantity" required>
                     </div>
                     <div class="form-group">

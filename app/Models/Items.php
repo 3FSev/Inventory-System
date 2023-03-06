@@ -9,8 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Items extends Model
 {
     use HasFactory;
-
-    protected $primaryKey = 'item_id';
+    public $timestamps = false;
     protected $fillable = [
         'item_name',
         'quantity',
@@ -22,5 +21,10 @@ class Items extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function wivs()
+    {
+        return $this->belongsToMany(Item::class, 'item_wiv', 'wiv_id', 'item_id')->withPivot('quantity');
     }
 }

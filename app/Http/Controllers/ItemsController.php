@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Department;
 use App\Models\User;
 use App\Models\Items;
 use App\Models\Category;
+use App\Models\Wiv;
 use Illuminate\Http\Request;
 
 class ItemsController extends Controller
@@ -16,7 +18,7 @@ class ItemsController extends Controller
     }
 
     public function users(){
-        $users = User::with('role', 'department')->get();
+        $users = User::with(['department'])->get();
         return view('warehouse/employee', compact('users'));
     }
 
@@ -34,34 +36,30 @@ class ItemsController extends Controller
         return redirect('items');
     }
 
-    public function destroy($item_id){
-        Items::where('item_id','=',$item_id)->delete();
+    public function destroy($id){
+        Items::where('id','=',$id)->delete();
         return redirect('items');
     }
 
-    public function show($item_id){
+    public function show($id){
         return view('warehouse/item', [
-            'item' => Items::find($item_id)
+            'item' => Items::find($id)
         ]);
     }
 
-    public function edit($item_id){
+    public function edit($id){
         $category = Category::pluck('name', 'id');
         return view('warehouse/item_edit', [
-            'item' => Items::find($item_id),
+            'item' => Items::find($id),
             'category' => $category
         ]);
     }
 
-    public function update(Request $request, $item_id){
-        $item = Items::find($item_id);
+    public function update(Request $request, $id){
+        $item = Items::find($id);
         $input = $request->all();
         $item->update($input);
         return redirect('items')->with('flash_message', 'Item updated;');
-    }
-
-    public function issuance(){
-        return view('warehouse/issuance');
     }
 
 }

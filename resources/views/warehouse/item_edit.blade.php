@@ -8,7 +8,7 @@
         <a href="../items" type="button" class="btn btn-primary bg-gradient-primary">Back</a>
         <div class="card-body">
 
-            <form role="form" method="POST" action="{{$item->item_id}}">
+            <form role="form" method="POST" action="{{$item->id}}">
                 @csrf
                 <input type="hidden" name="id" value="" />
                 <div class="form-group row text-left text-warning">
@@ -16,8 +16,8 @@
                         Item Code:
                     </div>
                     <div class="col-sm-9">
-                        <input class="form-control" name="item_id"
-                            value="{{$item->item_id}}" readonly>
+                        <input class="form-control" name="id"
+                            value="{{$item->id}}" readonly>
                     </div>
                 </div>
                 <div class="form-group row text-left text-warning">
@@ -25,7 +25,7 @@
                         Item Name:
                     </div>
                     <div class="col-sm-9">
-                        <input class="form-control" name="item_name" value="{{$item->item_name}}"
+                        <input class="form-control" name="name" value="{{$item->name}}"
                             required>
                     </div>
                 </div>

@@ -48,6 +48,30 @@
   box-sizing: border-box;
 }
 
+.btn-add-item, .btn-remove-item {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.item-group {
+  margin-bottom: 5px;
+}
+
+.container {
+  height: 200px;
+  position: relative;
+  border: 3px solid green;
+}
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
 html {
   font-family: sans-serif;
   line-height: 1.15;

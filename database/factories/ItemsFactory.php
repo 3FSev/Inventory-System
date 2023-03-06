@@ -17,9 +17,9 @@ class ItemsFactory extends Factory
     public function definition(): array
     {
         return [
-            'item_name' => $this->faker->sentence(),
+            'name' => $this->faker->sentence(),
             'quantity' => $this->faker->numberBetween(1, 10),
-            'category' => $this->faker->randomElement(['IT Equipment', 'Communication Equipment', 'Others']),
+            'category_id' => $this->faker->numberBetween(1,3),
             'price' => $this->faker->numberBetween(500, 100000),
             'description' => $this->faker->text(),
         ];
