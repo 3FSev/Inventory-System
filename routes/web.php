@@ -1,10 +1,8 @@
 <?php
 
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\IssuanceController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\UserController;
-use App\Models\Items;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,26 +16,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//----Waiting Page----//
 Route::middleware(['auth','ver'])->group(function(){
     Route::get('approval', function() {
         return view('approval');
     });
 });
 
+//----Admin Module----//
 Route::middleware(['auth','admin-user'])->group(function(){
-    Route::get('admin', function () {
-        return view('admin/admin-index');
-    });
+    Route::get('dashboard', [UserController::class, 'dashboard']);
     Route::get('ver', [UserController::class, 'verified']);
     Route::get('unv', [UserController::class, 'index'])->name('admin.users.index');
     Route::get('unv/{user_id}/approve', [UserController::class, 'approve'])->name('admin.users.approve');
+    Route::delete('unv/{user_id}/destroy', [UserController::class, 'destroy'])->name('admin.users.destroy');
 });
 
+//----Warehouse Module----//
 Route::middleware(['auth','warehouse-user'])->group(function(){
-    //Items Route
-    Route::get('/', function () {
-        return view('warehouse/index');
-    });
+    Route::get('dashboard', [ItemsController::class, 'dashboard']);
     Route::get('items', [ItemsController::class, 'index']);
     Route::get('employee', [ItemsController::class, 'users']);
     Route::post('items', [ItemsController::class, 'store']);
@@ -49,7 +46,7 @@ Route::middleware(['auth','warehouse-user'])->group(function(){
     Route::post('issuance', [IssuanceController::class, 'store'])->name('issuance.store');
 });
 
-
+//----Employee Module----//
 Route::middleware(['auth','employee-user','approved'])->group(function(){
     Route::get('employee-index', function(){
         return view('employee/employee-index');

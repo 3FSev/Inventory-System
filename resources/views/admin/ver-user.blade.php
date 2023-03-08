@@ -22,10 +22,10 @@
                         <th>{{$row->email}}</th>
                         <th>{{$row->role->name}}</th>
                         <th>
-                            <form method="POST" action="">
+                            <form method="POST" action="{{route('admin.users.destroy', $row->id)}}">
                                 @csrf
                                 @method('DELETE')
-                                <input type="submit" class="btn btn-danger btn-sm" value="Delete" />
+                                <input onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger btn-sm" value="Delete" />
                             </form>
                         </th>
                     </tr>

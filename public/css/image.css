@@ -1,0 +1,39 @@
+.image {
+    border-radius: 50%;
+    border: 8px solid #C5BDDC;
+    width: 180px;
+    height: 180px;
+}
+
+.upload {
+    width: 180px;
+    position: relative;
+    margin-right: 50%;
+}
+
+.upload .round:hover {
+    background: #A85CF9;
+}
+
+.upload .round {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: #007BFF;
+    width: 32px;
+    height: 32px;
+    line-height: 33px;
+    text-align: center;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.upload .round input[type="file"] {
+    position: absolute;
+    transform: scale(2);
+    opacity: 0;
+}
+
+input[type=file]::-webkit-file-upload-button {
+    cursor: pointer;
+}

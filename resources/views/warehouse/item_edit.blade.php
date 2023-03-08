@@ -51,7 +51,7 @@
                         Price:
                     </div>
                     <div class="col-sm-9">
-                        <input class="form-control" name="prodname" value="{{$item->price}}"
+                        <input class="form-control" name="price" value="{{$item->price}}"
                             required>
                     </div>
                 </div>

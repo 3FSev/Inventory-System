@@ -10,6 +10,7 @@
                         <div class="col mr-0">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Registered Accounts</div>
                             <div class="h6 mb-0 font-weight-bold text-gray-800">
+                                {{$verCount}} Account(s)
                             </div>
                         </div>
                         <div class="col-auto">
@@ -30,6 +31,7 @@
                         <div class="col mr-0">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Unregistered Accounts</div>
                             <div class="h6 mb-0 font-weight-bold text-gray-800">
+                                {{$unvCount}} Account(s)
                             </div>
                         </div>
                         <div class="col-auto">

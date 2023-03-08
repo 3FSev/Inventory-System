@@ -26,6 +26,6 @@ class Items extends Model
 
     public function wivs()
     {
-        return $this->belongsToMany(Wiv::class, 'item_wiv', 'wiv_id', 'item_id')->withPivot('quantity');
+        return $this->belongsToMany(Wiv::class, 'item_wiv', 'wiv_id', 'item_id')->withPivot('quantity','unit','amount');
     }
 }

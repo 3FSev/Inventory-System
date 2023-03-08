@@ -11,6 +11,12 @@ use Illuminate\Http\Request;
 
 class ItemsController extends Controller
 {
+    public function dashboard(){
+        $itemCount = Items::count();
+        $userCount = User::whereNotNull('approved_at')->count();
+        return view('warehouse/index', compact('itemCount','userCount'));
+    }
+
     public function index(){
         $item_list = items::all();
         $category = Category::pluck('name', 'id');
@@ -18,7 +24,7 @@ class ItemsController extends Controller
     }
 
     public function users(){
-        $users = User::with(['department'])->get();
+        $users = User::whereNotNull('approved_at')->with(['department'])->get();
         return view('warehouse/employee', compact('users'));
     }
 
@@ -33,12 +39,12 @@ class ItemsController extends Controller
 
         Items::create($formField);
 
-        return redirect('items');
+        return redirect()->back()->with('succes','Item created successfully');
     }
 
     public function destroy($id){
         Items::where('id','=',$id)->delete();
-        return redirect('items');
+        return redirect()->back()->with('warning','Item deleted successfully');
     }
 
     public function show($id){
@@ -57,9 +63,13 @@ class ItemsController extends Controller
 
     public function update(Request $request, $id){
         $item = Items::find($id);
-        $input = $request->all();
-        $item->update($input);
-        return redirect('items')->with('flash_message', 'Item updated;');
+        $item->name = $request->input('name');
+        $item->description = $request->input('description');
+        $item->category_id = $request->input('category_id');
+        $item->price = $request->input('price');
+        $item->quantity = $request->input('quantity');
+        $item->save();
+        return redirect('items')->with('success', 'Item updated successfully');
     }
 
 }

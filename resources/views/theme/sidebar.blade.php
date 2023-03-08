@@ -24,9 +24,9 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="/">
+        <a class="nav-link" href="dashboard">
           <i class="fas fa-fw fa-home"></i>
-          <span>Home</span></a>
+          <span>Dashboard</span></a>
       </li>
       <!-- Divider -->
       <hr class="sidebar-divider">
@@ -65,3 +65,4 @@
     </ul>
     <!-- End of Sidebar -->
 @include('theme.topbar')
+@include('flash-message')
