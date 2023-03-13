@@ -24,7 +24,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="dashboard">
+        <a class="nav-link" href="warehouse">
           <i class="fas fa-fw fa-home"></i>
           <span>Dashboard</span></a>
       </li>
@@ -52,6 +52,12 @@
         <a class="nav-link" href="issuance">
           <i class="fas fa-fw fa-table"></i>
           <span>Issuance</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="returned">
+          <i class="fas fa-fw fa-table"></i>
+          <span>MRT</span></a>
       </li>
 
       <!-- Divider -->

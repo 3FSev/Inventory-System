@@ -12,10 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('item_wiv', function (Blueprint $table) {
-            $table->foreignId('item_id')->constrained();
+            //Wiv foreign key
             $table->unsignedBigInteger('wiv_id');
-            $table->foreign('wiv_id')->references('id')->on('wiv')->onDelete('cascade');
-            $table->unsignedInteger('quantity')->default(1);
+            $table->foreign('wiv_id')->references('id')->on('wiv');
+
+            //Item foreign key
+            $table->unsignedBigInteger('item_id');
+            $table->foreign('item_id')->references('id')->on('items');
+
+            $table->integer('quantity');
+            $table->integer('amount');
         });
     }
 

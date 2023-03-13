@@ -16,11 +16,11 @@ class EmployeeMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::check() && Auth::user()->role_id == '3'){
+        if(Auth::check() && Auth::user()->role_id == '1'){
             return $next($request);
         }
         elseif(Auth::check() && Auth::user()->role_id == '2'){
-            return redirect('/');
+            return redirect('warehouse');
         }
         else{
             return redirect('admin');

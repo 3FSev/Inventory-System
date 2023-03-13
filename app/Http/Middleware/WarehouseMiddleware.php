@@ -19,11 +19,11 @@ class WarehouseMiddleware
         if(Auth::check() && Auth::user()->role_id == '2'){
             return $next($request);
         }
-        elseif(Auth::check() && Auth::user()->role_id == '1'){
+        elseif(Auth::check() && Auth::user()->role_id == '3'){
             return redirect('admin');
         }
         else{
-            return redirect('employee-index');
+            return redirect('accountability');
         }
     }
 }

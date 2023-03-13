@@ -69,7 +69,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
   
-    <title>Inventory System</title>
+    <title>Ormeco Warehouse</title>
     <link rel="icon" href="https://www.freeiconspng.com/uploads/sales-icon-7.png">
 
     <!-- Custom fonts for this template-->
@@ -93,6 +93,7 @@
     <link rel="stylesheet" href="css/default-css.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/responsive.css">
+    
     <!-- font awesome -->
     <script defer src="https://use.fontawesome.com/releases/v6.1.1/js/all.js"
         integrity="sha384-xBXmu0dk1bEoiwd71wOonQLyH+VpgR1XcDH3rtxrLww5ajNTuMvBdL5SOiFZnNdp" crossorigin="anonymous">

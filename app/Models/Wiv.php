@@ -11,6 +11,10 @@ class Wiv extends Model
     use HasFactory;
 
     protected $table = 'wiv';
+
+    protected $fillable = [
+        'received_at',
+    ];
     public $timestamps = false;
 
     public function users()
@@ -20,6 +24,6 @@ class Wiv extends Model
 
     public function items()
     {
-        return $this->belongsToMany(Items::class, 'item_wiv', 'wiv_id', 'item_id')->withPivot('quantity','unit','amount');
+        return $this->belongsToMany(Items::class, 'item_wiv', 'wiv_id', 'item_id')->withPivot('quantity','unit','amount','mrt_id','returned_qty');
     }
 }

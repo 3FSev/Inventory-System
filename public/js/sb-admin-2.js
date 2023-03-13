@@ -63,7 +63,7 @@
             dateFormat: 'yy-mm-dd',
             autoclose: true,
             todayHighlight: true
-        });
+        })
     });
-
+    
 })(jQuery); // End of use strict

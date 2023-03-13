@@ -15,7 +15,7 @@
 
             focusState(input);
             blurState(input);
-        });     
+        });
     });
 
     function focusState(input){
@@ -30,19 +30,52 @@
         }
     }
 
-    const passInput = $('.js-pass');
-    const showHidePass = $('#show-hide-pass');
+    const passwordInput = $('.js-pass');
+  const passwordConfirmInput = $('.js-pass-2');
+  const showHidePassword = $('#show-hide-pass');
+  const showHideConfirmPassword = $('#show-hide-confirm-pass-2');
 
-    showHidePass.on('click', () => {
-        if(passInput.attr('type') == "password"){
-            passInput.attr('type', 'text');
-            showHidePass.attr('src', 'assets/hidePass.svg');
-        } else {
-            passInput.attr('type', 'password');
-            showHidePass.attr('src', 'assets/showPass.svg');
-        }
-    });
+  // Show/hide password functionality
+  showHidePassword.on('click', () => {
+    if (passwordInput.attr('type') == 'password') {
+      passwordInput.attr('type', 'text');
+      showHidePassword.attr('src', 'assets/hidePass.svg');
+    } else {
+      passwordInput.attr('type', 'password');
+      showHidePassword.attr('src', 'assets/showPass.svg');
+    }
+  });
 
-    console.log(passInput);
+  // Show/hide confirm password functionality
+  showHideConfirmPassword.on('click', () => {
+    if (passwordConfirmInput.attr('type') == 'password') {
+      passwordConfirmInput.attr('type', 'text');
+      showHideConfirmPassword.attr('src', 'assets/hidePass.svg');
+    } else {
+      passwordConfirmInput.attr('type', 'password');
+      showHideConfirmPassword.attr('src', 'assets/showPass.svg');
+    }
+  });
+
+  // Set initial state of password fields
+  passwordInput.on('focus', () => {
+    passwordInput.parent().addClass('focus');
+  });
+
+  passwordInput.on('blur', () => {
+    if (!passwordInput.val()) {
+      passwordInput.parent().removeClass('focus');
+    }
+  });
+
+  passwordConfirmInput.on('focus', () => {
+    passwordConfirmInput.parent().addClass('focus');
+  });
+
+  passwordConfirmInput.on('blur', () => {
+    if (!passwordConfirmInput.val()) {
+      passwordConfirmInput.parent().removeClass('focus');
+    }
+  });
 
 })(jQuery);

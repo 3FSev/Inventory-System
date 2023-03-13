@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->timestamp('approved_at')->nullable();
+            $table->unsignedBigInteger('role_id')->default(1)->change();
+            $table->unsignedBigInteger('dept_id')->default(1)->change();
         });
     }
 
@@ -22,7 +23,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('approved_at');
+            $table->unsignedBigInteger('role_id')->unsigned()->change();
+            $table->unsignedBigInteger('dept_id')->unsigned()->change();
         });
     }
 };

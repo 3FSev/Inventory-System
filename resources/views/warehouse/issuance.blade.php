@@ -68,11 +68,11 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="{{route('issuance.store')}}" class="container-fluid">
+                <form method="POST" action="{{route('issuance.store')}}" class="container-fluid" autocomplete="off">
                     @csrf
                     <div class="form-group">
                         <label for="employee">Employee:</label>
-                        <select name="user" id="user" class="form-control">
+                        <select name="user" id="user" class="form-control" required>
                             @foreach ($users as $user)
                             <option hidden></option>
                             <option value="{{ $user->id }}">{{ $user->name }}</option>
@@ -112,7 +112,7 @@
                         <div class="col-sm-8">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <input type="number" name="po" class="form-control" placeholder="Number" required>
+                                    <input type="number" name="po" class="form-control" placeholder="Number" required required>
                                 </div>
                                 <div class="col-sm-6">
                                     <input type="text" class="form-control datepicker" name="poDate" placeholder="Date"

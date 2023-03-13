@@ -18,9 +18,8 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-            //0 = Employee, 1 = Warehouse, 2 = Admin
-            $table->tinyInteger('role')->default('0');
             $table->timestamps();
+            $table->timestamp('approved_at')->nullable();
         });
     }
 

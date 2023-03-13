@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('wiv_master', function (Blueprint $table) {
-            $table->id("wiv_id");
-            $table->timestamps();
+        Schema::table('item_mrt', function (Blueprint $table) {
+            $table->integer('quantity');
+            $table->integer('amount');
         });
     }
 
@@ -22,6 +22,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('wiv_master');
+        Schema::table('item_mrt', function (Blueprint $table) {
+            $table->dropColumn('quantity');
+            $table->dropColumn('amount');
+        });
     }
 };

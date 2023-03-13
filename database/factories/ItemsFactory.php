@@ -19,6 +19,7 @@ class ItemsFactory extends Factory
         return [
             'name' => $this->faker->sentence(),
             'quantity' => $this->faker->numberBetween(1, 10),
+            'unit' => $this->faker->randomElement(['set', 'unit', 'pair']),
             'category_id' => $this->faker->numberBetween(1,3),
             'price' => $this->faker->numberBetween(500, 100000),
             'description' => $this->faker->text(),

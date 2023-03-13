@@ -13,9 +13,24 @@ return new class extends Migration
     {
         Schema::create('wiv', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
+            //User foreign key
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            
             $table->integer('jv');
-            $table->timestamps();
+            $table->date('jv_date');
+
+            $table->integer('riv');
+            $table->date('riv_date');
+
+            $table->integer('po');
+            $table->date('po_date');
+
+            $table->integer('rr');
+            $table->date('rr_date');
+
+            $table->date('wiv_date');
+            $table->timestamp('received_at');
         });
     }
 

@@ -11,9 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('wiv', function (Blueprint $table) {
+        Schema::create('mrt', function (Blueprint $table) {
+            $table->id();
+
+            //User foreign key
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+
+            $table->date('mrt_date');
             $table->timestamp('approved_at')->nullable();
-            $table->timestamp('returned_at')->nullable();
         });
     }
 
@@ -22,9 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('wiv', function (Blueprint $table) {
-            $table->dropColumn('approved_at');
-            $table->dropColumn('returned_at');
-        });
+        Schema::dropIfExists('mrt');
     }
 };
