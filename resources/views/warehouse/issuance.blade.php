@@ -141,7 +141,6 @@
                                 <tr>
                                     <th>Item</th>
                                     <th>Quantity</th>
-                                    <th>Unit</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -156,9 +155,6 @@
                                     </td>
                                     <td>
                                         <input type="number" class="form-control" name="quantity[]">
-                                    </td>
-                                    <td>
-                                        <input type="text" class="form-control" name="unit[]">
                                     </td>
                                     <td>
                                         <button type="button" class="btn btn-danger remove-row">Remove</button>

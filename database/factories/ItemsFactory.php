@@ -20,7 +20,7 @@ class ItemsFactory extends Factory
             'name' => $this->faker->sentence(),
             'quantity' => $this->faker->numberBetween(1, 10),
             'unit' => $this->faker->randomElement(['set', 'unit', 'pair']),
-            'category_id' => $this->faker->numberBetween(1,3),
+            'category_id' => $this->faker->numberBetween(1,5),
             'price' => $this->faker->numberBetween(500, 100000),
             'description' => $this->faker->text(),
         ];

@@ -109,6 +109,12 @@
                 <form method="POST" action="{{route('mrt.store')}}" class="container-fluid" autocomplete="off">
                     @csrf
                     <div class="table-responsive">
+                        <select name="user" id="user" class="form-control" required>
+                            @foreach ($users as $user)
+                            <option hidden></option>
+                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                            @endforeach
+                        </select>
                         <table class="table" id="items-table">
                             <thead>
                                 <tr>

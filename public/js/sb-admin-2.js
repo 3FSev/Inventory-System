@@ -65,5 +65,37 @@
             todayHighlight: true
         })
     });
-    
+
+    $(document).ready(function() {
+        $('#user').on('change', function() {
+            var id = $(this).val();
+
+            $.ajax({
+                url: '/get-items/' + id,
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    var items_dropdown = $('select[name="item[]"]');
+
+                    console.log('User selected:', items_dropdown);
+
+                    // Remove existing options
+                    items_dropdown.empty();
+
+                    // Add new options based on the fetched items
+                    $.each(data, function(index, item) {
+                        items_dropdown.append($('<option>', {
+                            value: item.id,
+                            text: item.name
+                        }));
+                    });
+
+                },
+                error: function(xhr, textStatus, errorThrown) {
+                    console.log('Error fetching items:', errorThrown);
+                }
+            });
+        });
+    });
+
 })(jQuery); // End of use strict

@@ -59,4 +59,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Wiv::class);
     }
+
+    public function mrt()
+    {
+        return $this->belongsTo(Mrt::class);
+    }
 }

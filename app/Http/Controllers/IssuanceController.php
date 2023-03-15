@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class IssuanceController extends Controller
 {
     public function show(){
-        $users = User::where('role_id', 3)->whereNotNull('approved_at')->get();
+        $users = User::where('role_id', 1)->whereNotNull('approved_at')->get();
         $items = Items::where('quantity', '>=', 1)->get();
         $wiv = Wiv::all();
 
@@ -29,7 +29,6 @@ class IssuanceController extends Controller
         $rrNumber = $request->input('rr');
         $rrDate = $request->input('rrDate');
         $items = $request->input('item');
-        $unit = $request->input('unit');
         $quantities = $request->input('quantity');
 
         // Check if the Wiv object is unique
@@ -70,7 +69,6 @@ class IssuanceController extends Controller
                 $wiv->items()->attach($wiv->id, [
                     'item_id' => $item->id,
                     'quantity' => $quantity,
-                    'unit' => $unit[$i],
                     'amount' => $amount // Add the amount to the pivot table
                 ]);
 

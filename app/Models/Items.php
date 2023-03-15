@@ -28,4 +28,9 @@ class Items extends Model
     {
         return $this->belongsToMany(Wiv::class, 'item_wiv', 'wiv_id', 'item_id')->withPivot('quantity','amount');
     }
+
+    public function mrt()
+    {
+        return $this->belongsToMany(Mrt::class, 'item_mrt', 'mrt_id', 'item_id')->withPivot('quantity','amount');
+    }
 }

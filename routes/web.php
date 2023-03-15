@@ -46,7 +46,8 @@ Route::middleware(['auth','warehouse-user'])->group(function(){
     Route::post('item_edit/{id}', [ItemsController::class, 'update']);
     Route::get('issuance', [IssuanceController::class, 'show'])->name('issuance.show');
     Route::post('issuance', [IssuanceController::class, 'store'])->name('issuance.store');
-    Route::get('returned', [ReturnedItemCotroller::class, 'show'])->name('returned.show');;
+    Route::get('returned', [AccountabilityController::class, 'showMrt'])->name('returned.show');
+    Route::get('get-items/{id}', [AccountabilityController::class, 'getItems']);
 });
 
 //----Employee Module----//

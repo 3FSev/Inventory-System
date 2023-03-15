@@ -24,4 +24,9 @@ class Mrt extends Model
     {
         return $this->belongsTo(Status::class);
     }
+
+    public function items()
+    {
+        return $this->belongsToMany(Items::class, 'item_mrt', 'mrt_id', 'item_id')->withPivot('quantity','amount');
+    }
 }
