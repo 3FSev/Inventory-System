@@ -13,7 +13,7 @@
     // Close any open menu accordions when window is resized below 768px
     $(window).resize(function () {
         if ($(window).width() < 768) {
-            $('.sidebar .collapse').collapse('hide');
+            $('.sidebar .collapse');
         };
     });
 
@@ -46,6 +46,7 @@
         e.preventDefault();
     });
 
+    // Multiple inpit table
     $(document).ready(function() {
       // Add new row to table
       $('.btn-add-item').click(function() {
@@ -58,6 +59,7 @@
       });
     });
 
+    // Datepicker
     $(document).ready(function(){
         $('.datepicker').datepicker({
             dateFormat: 'yy-mm-dd',
@@ -66,8 +68,9 @@
         })
     });
 
+    // Fetch assigned items to user
     $(document).ready(function() {
-        $('#user').on('change', function() {
+        $('.user-wiv').on('change', function() {
             var id = $(this).val();
 
             $.ajax({

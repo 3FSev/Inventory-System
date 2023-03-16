@@ -15,18 +15,14 @@ class Mrt extends Model
     protected $fillable = [
         'date',
     ];
-    public function itemWivs()
+    
+    public function users()
     {
-        return $this->hasMany(ItemWiv::class);
-    }
-
-    public function status()
-    {
-        return $this->belongsTo(Status::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function items()
     {
-        return $this->belongsToMany(Items::class, 'item_mrt', 'mrt_id', 'item_id')->withPivot('quantity','amount');
+        return $this->belongsToMany(Items::class, 'item_mrt', 'mrt_id', 'item_id')->withPivot('quantity','amount','status_id');
     }
 }

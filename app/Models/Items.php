@@ -26,11 +26,11 @@ class Items extends Model
 
     public function wivs()
     {
-        return $this->belongsToMany(Wiv::class, 'item_wiv', 'wiv_id', 'item_id')->withPivot('quantity','amount');
+        return $this->belongsToMany(Wiv::class, 'item_wiv', 'item_id', 'wiv_id')->withPivot('quantity','amount');
     }
 
     public function mrt()
     {
-        return $this->belongsToMany(Mrt::class, 'item_mrt', 'mrt_id', 'item_id')->withPivot('quantity','amount');
+        return $this->belongsToMany(Mrt::class, 'item_mrt', 'mrt_id', 'item_id')->withPivot('quantity','amount','status_id');
     }
 }

@@ -149,7 +149,7 @@
                                     <td>
                                         <select name="item[]" class="form-control">
                                             @foreach ($items as $item)
-                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                                <option value="{{ $item->id }}">{{ $item->name }}</option>
                                             @endforeach
                                         </select>
                                     </td>

@@ -1,8 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-@include('theme.head')
-
+@include('theme/head')
 <body id="page-top">
 
   <!-- Page Wrapper -->
@@ -16,7 +12,7 @@
         <div class="logo-img">
           <img src="/img/50 logo.png" alt="Ormeco Logo" width="50" height="50">
         </div>
-        <div class="sidebar-brand-text mx-3">Ormeco Inventory System</div>
+        <div class="sidebar-brand-text mx-3">Ormeco Accountability System</div>
       </a>
 
       <!-- Divider -->

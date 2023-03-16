@@ -6,9 +6,9 @@
 @endif
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h4 class="m-2 font-weight-bold text-primary">MRT&nbsp;<a href="#" data-toggle="modal"
-            data-target="#aModal" type="button" class="btn btn-primary bg-gradient-primary"
-            style="border-radius: 0px;"><i class="fas fa-fw fa-plus"></i></a></h4>
+        <h4 class="m-2 font-weight-bold text-primary">MRT&nbsp;<a href="#" data-toggle="modal" data-target="#aModal"
+                type="button" class="btn btn-primary bg-gradient-primary" style="border-radius: 0px;"><i
+                    class="fas fa-fw fa-plus"></i></a></h4>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -46,22 +46,26 @@
                         </th>
                         <th>
                             @foreach($mrt->items as $item)
-                            {{($item->pivot->unit)}}<br>
+                            {{($item->unit)}}<br>
                             @endforeach
                         </th>
                         <th>
-                            @foreach($wiv->items as $item)
+                            @foreach($mrt->items as $item)
                             {{ number_format($item->pivot->amount, 2, '.', ',') }}<br>
                             @endforeach
                         </th>
                         <th>
                             @foreach ($status as $status)
-                            <input type="radio" name="status" value="{{ $status->id }}">
-                            <label>{{ $status->name }}</label>
+                                
                             @endforeach
                         </th>
                         <th>
-
+                            <form method="POST" action="{{route('admin.users.destroy', $mrt->id)}}">
+                                @csrf
+                                @method('DELETE')
+                                <a href="{{ route('returned.approve', $mrt->id) }}"class="btn btn-success btn-sm">Approved</a>
+                                <input onclick="return confirm('Are you sure?')" type="submit"class="btn btn-danger btn-sm" value="Delete" />
+                            </form>
                         </th>
                     </tr>
                     @endforeach
@@ -71,8 +75,8 @@
     </div>
 </div>
 @include('theme.footer')
- <!-- Issuance Modal-->
- <div class="modal fade" id="aModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Issuance Modal-->
+<div class="modal fade" id="aModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -82,14 +86,35 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="{{route('mrt.store')}}" class="container-fluid" autocomplete="off">
+                <form method="POST" action="{{route('returned.store')}}" class="container-fluid" autocomplete="off">
                     @csrf
-                    <select name="user_id" id="user" class="form-control" required>
-                        @foreach ($users as $user)
-                        <option hidden></option>
-                        <option value="{{ $user->id }}">{{ $user->name }}</option>
-                        @endforeach
-                    </select>
+                    <div class="form-group row">
+                        <label for="riv" class="col-sm-2 col-form-label">MRT:</label>
+                        <div class="col-sm-8">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <input type="number" name="mrt" class="form-control" placeholder="Number" required>
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control datepicker" name="mrtDate" placeholder="Date"
+                                        required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="riv" class="col-sm-2 col-form-label">Employee:</label>
+                        <div class="col-sm-9">
+                            <div class="row">
+                                <select name="user" id="user" class="form-control user-mrt" required>
+                                    @foreach ($users as $user)
+                                    <option hidden></option>
+                                    <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                     <div class="table-responsive">
                         <table class="table" id="items-table">
                             <thead>
@@ -101,7 +126,7 @@
                             </thead>
                             <tbody>
                                 <tr class="item-row">
-                                    <td>
+                                    <td class="table-cell">
                                         <select name="item[]" class="form-control" required>
                                         </select>
                                     </td>
