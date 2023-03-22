@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
+use App\Models\Itemwiv;
 use App\Models\Mrt;
 use App\Models\Wiv;
 use App\Models\User;
 use App\Models\Items;
-use App\Models\Status;
+use App\Models\ItemMrt;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class AccountabilityController extends Controller
@@ -39,10 +40,9 @@ class AccountabilityController extends Controller
 
     public function showMrt(){
         $mrt = Mrt::all();
-        $status = Status::all();
         $users = User::whereNotNull('approved_at')->where('role_id', 1)->get();
 
-        return view('warehouse/mrt-request', compact('mrt','users','status'));
+        return view('warehouse/mrt-request', compact('mrt','users'));
     }
 
     public function getItems($id)
@@ -54,6 +54,69 @@ class AccountabilityController extends Controller
         return response()->json($items);
     }
 
+    public function mrtForm($id){
+        return view('warehouse/mrt-form', [
+            'mrt' => Mrt::find($id)
+        ]);
+    }
+
+    public function confirmMrt(Request $request){
+        $user_id = request('user_id');
+        $mrtId = request('mrt_id');
+        $usable = $request->input('usable');
+        $unusable = $request->input('unusable');
+        $mrtNumber = $request->input('mrtNumber');
+        $mrtDate = $request->input('mrtDate');
+        $items = $request->input('items');
+
+        $mrt = Mrt::where('id',$mrtId)->first();
+        $mrt->mrt_number = $mrtNumber;
+        $mrt->mrt_date = $mrtDate;
+        $mrt->save();
+
+        foreach ($usable as $count => $value) {
+            $item_id =  $items[$count];
+            // Update the ItemMrt pivot record
+            $item = Items::find($item_id);
+            $itemMrtQuantity = $item->mrt->first()->pivot->quantity;
+            $item->mrt()->sync($mrtId, [
+                'usable' => $usable,
+                'unusable' => $unusable
+            ]);
+
+             // Add quantity in items
+            $item = Items::find($items[$count]);
+            if ($item) {
+                $item->quantity += $value;
+                $item->save();
+            }
+
+            // Get the item_id wiv record based on quantity and date
+            $wivs = Wiv::join('item_wiv', 'wiv.id', 'item_wiv.wiv_id')
+                ->where('wiv.user_id', $user_id)
+                ->where('item_wiv.item_id',$item_id)
+                ->where('item_wiv.quantity','>',0)
+                ->orderBy('wiv_date','asc');
+                
+            // Deduct quantity of item_wiv
+            foreach ($wivs as $wiv) {
+                if ($itemMrtQuantity <= $wiv->quantity) {
+                    $wiv->quantity -= $itemMrtQuantity;
+                    $wiv->save();
+                    break;
+                } else {
+                    $value -= $wiv->quantity;
+                    $wiv->quantity = 0;
+                    $wiv->save();
+                }
+                dd($wivs->first());
+            }
+        }
+
+        return redirect()->back()->with('success','Materials returned succesfully');
+
+    }
+
 
 
     public function storeMrt(Request $request)
@@ -63,9 +126,7 @@ class AccountabilityController extends Controller
         $quantities = $request->input('quantity');
 
         $mrt = new Mrt;
-        $mrt->id = $request->input('mrt');
         $mrt->user_id = $user_id;
-        $mrt->mrt_date = $request->input('mrtDate');
         $mrt->save();
 
         for ($i = 0; $i < count($items); $i++) {
@@ -74,26 +135,6 @@ class AccountabilityController extends Controller
             $price = $item->price;
             $quantity_to_return = $quantities[$i];
             $amount = $price * $quantity_to_return;
-
-            // Get the related WIVs in ascending order of creation time
-            //$wivs = $item->wivs()->where('user_id', $user_id)->orderBy('wiv_date')->get();
-
-            /*foreach ($wivs as $wiv) {
-                // Check if the quantity to be returned is greater than the quantity assigned in this WIV
-                if ($quantity_to_return > $wiv->quantity) {
-                    // Deduct the quantity assigned in this WIV from the quantity to be returned
-                    $quantity_to_return -= $wiv->quantity;
-                } else {
-                    // Deduct the remaining quantity to be returned from this WIV and save it
-                    $wiv->quantity -= $quantity_to_return;
-                    $wiv->save();
-                    break;
-                }
-            }*/
-
-            // Update the item quantity in the database
-            /*$item->quantity += $quantity_to_return;
-            $item->save();*/
 
             // Insert into pivot table
             $mrt->items()->attach($item_id, [

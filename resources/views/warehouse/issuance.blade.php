@@ -28,9 +28,9 @@
                 <tbody>
                     @foreach($wiv as $wiv)
                     <tr>
-                        <th>{{ $wiv->id }}</th>
-                        <th>{{ $wiv->users->name }}</th>
-                        <th>
+                        <td>{{ $wiv->id }}</td>
+                        <td>{{ $wiv->users->name }}</td>
+                        <td>
                             <ul>
                                 @foreach($wiv->items as $item)
                                 <li>
@@ -38,17 +38,17 @@
                                 </li>
                                 @endforeach
                             </ul>
-                        </th>
-                        <th>
+                        </td>
+                        <td>
                             @foreach($wiv->items as $item)
                             {{($item->pivot->quantity)}}<br>
                             @endforeach
-                        </th>
-                        <th>
+                        </td>
+                        <td>
                             @foreach($wiv->items as $item)
                             {{ number_format($item->pivot->amount, 2, '.', ',') }}<br>
                             @endforeach
-                        </th>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>

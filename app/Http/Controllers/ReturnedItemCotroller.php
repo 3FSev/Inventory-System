@@ -10,8 +10,7 @@ class ReturnedItemCotroller extends Controller
 {
     public function  show(){
         $mrt = Mrt::all();
-        $status = Status::all();
 
-        return view('warehouse/mrt-request', compact('status','mrt'));
+        return view('warehouse/mrt-request', compact('mrt'));
     }
 }

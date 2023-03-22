@@ -112,37 +112,37 @@
                                                     <tbody>
                                                         @foreach ($pending as $pending)
                                                         <tr>
-                                                            <th>{{$pending->id}}</th>
-                                                            <th>{{$pending->wiv_date}}</th>
-                                                            <th>
+                                                            <td>{{$pending->id}}</td>
+                                                            <td>{{$pending->wiv_date}}</td>
+                                                            <td>
                                                                 @foreach ($pending->items as $item)
                                                                 {{$item->name}}
                                                                 @endforeach
-                                                            </th>
-                                                            <th>
+                                                            </td>
+                                                            <td>
                                                                 @foreach($pending->items as $item)
                                                                 {{($item->category->name)}}<br>
                                                                 @endforeach
-                                                            </th>
-                                                            <th>
+                                                            </td>
+                                                            <td>
                                                                 @foreach($pending->items as $item)
                                                                 {{($item->pivot->quantity)}}<br>
                                                                 @endforeach
-                                                            </th>
-                                                            <th>
+                                                            </td>
+                                                            <td>
                                                                 @foreach($pending->items as $item)
                                                                 {{($item->price)}}<br>
                                                                 @endforeach
-                                                            </th>
-                                                            <th>
+                                                            </td>
+                                                            <td>
                                                                 @foreach($pending->items as $item)
                                                                 {{ number_format($item->pivot->amount, 2, '.', ',') }}<br>
                                                                 @endforeach
-                                                            </th>
-                                                            <th>
+                                                            </td>
+                                                            <td>
                                                                 <a href="{{ route('wiv.approve', $pending->id) }}"
                                                                     class="btn btn-success btn-sm">Approved</a>
-                                                            </th>
+                                                            </td>
                                                         </tr>
                                                         @endforeach
                                                     </tbody>

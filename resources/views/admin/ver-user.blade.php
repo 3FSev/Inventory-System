@@ -18,16 +18,16 @@
           <tbody>
             @foreach ($user_list as $row)
                     <tr>
-                        <th>{{$row->name}}</th>
-                        <th>{{$row->email}}</th>
-                        <th>{{$row->role->name}}</th>
-                        <th>
+                        <td>{{$row->name}}</td>
+                        <td>{{$row->email}}</td>
+                        <td>{{$row->role->name}}</td>
+                        <td>
                             <form method="POST" action="{{route('admin.users.destroy', $row->id)}}">
                                 @csrf
                                 @method('DELETE')
                                 <input onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger btn-sm" value="Delete" />
                             </form>
-                        </th>
+                        </td>
                     </tr>
             @endforeach
           </tbody>

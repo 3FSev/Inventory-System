@@ -18,17 +18,17 @@
                 <tbody>
                     @foreach ($users as $row)
                     <tr>
-                        <th>{{$row->name}}</th>
-                        <th>{{$row->email}}</th>
-                        <th>{{$row->created_at}}</th>
-                        <th>
+                        <td>{{$row->name}}</td>
+                        <td>{{$row->email}}</td>
+                        <td>{{$row->created_at}}</td>
+                        <td>
                             <form method="POST" action="{{route('admin.users.destroy', $row->id)}}">
                                 @csrf
                                 @method('DELETE')
                                 <a href="{{ route('admin.users.approve', $row->id) }}" class="btn btn-success btn-sm">Approved</a>
                                 <input onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger btn-sm" value="Delete" />
                             </form>
-                        </th>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>

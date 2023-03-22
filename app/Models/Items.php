@@ -31,6 +31,6 @@ class Items extends Model
 
     public function mrt()
     {
-        return $this->belongsToMany(Mrt::class, 'item_mrt', 'mrt_id', 'item_id')->withPivot('quantity','amount','status_id');
+        return $this->belongsToMany(Mrt::class, 'item_mrt', 'item_id', 'mrt_id')->withPivot('quantity','amount','usable','unusable');
     }
 }

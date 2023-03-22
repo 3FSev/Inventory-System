@@ -70,7 +70,7 @@
 
     // Fetch assigned items to user
     $(document).ready(function() {
-        $('.user-wiv').on('change', function() {
+        $('.user-mrt').on('change', function() {
             var id = $(this).val();
 
             $.ajax({
@@ -100,5 +100,24 @@
             });
         });
     });
+
+    $(document).ready(function() {
+        $('.usable-input').on('input', function() {
+          var quantity = $(this).attr('max');
+          var usable = $(this).val();
+          var nonUsable = quantity - usable;
+          console.log(nonUsable);
+          $(this).closest('tr').find('.non-usable-input').val(nonUsable);
+        });
+      });
+
+      $(window).on('load', function() {
+        $('.usable-input').each(function() {
+          var quantity = $(this).attr('max');
+          var usable = $(this).val();
+          var nonUsable = quantity - usable;
+          $(this).closest('tr').find('.non-usable-input').val(nonUsable);
+        });
+      });
 
 })(jQuery); // End of use strict

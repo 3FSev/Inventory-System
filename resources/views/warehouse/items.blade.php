@@ -24,11 +24,11 @@
                 <tbody>
                     @foreach ($item_list as $row)
                     <tr>
-                        <th>{{$row->id}}</th>
-                        <th>{{$row->name}}</th>
-                        <th>{{$row->quantity}}</th>
-                        <th>{{$row->category->name}}</th>
-                        <th>
+                        <td>{{$row->id}}</td>
+                        <td>{{$row->name}}</td>
+                        <td>{{$row->quantity}}</td>
+                        <td>{{$row->category->name}}</td>
+                        <td>
                             <form method="POST" action="{{route('destroy', $row->id)}}">
                                 @csrf
                                 @method('DELETE')
@@ -36,7 +36,7 @@
                                 <a href="{{route('edit', $row->id)}}" class="btn btn-warning btn-sm">Edit</a>
                                 <input onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger btn-sm" value="Delete" />
                             </form>
-                        </th>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>

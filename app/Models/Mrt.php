@@ -23,6 +23,6 @@ class Mrt extends Model
 
     public function items()
     {
-        return $this->belongsToMany(Items::class, 'item_mrt', 'mrt_id', 'item_id')->withPivot('quantity','amount','status_id');
+        return $this->belongsToMany(Items::class, 'item_mrt', 'mrt_id', 'item_id')->withPivot('quantity','amount','usable','unusable');
     }
 }

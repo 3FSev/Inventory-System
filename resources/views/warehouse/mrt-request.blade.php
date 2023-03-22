@@ -1,8 +1,8 @@
 @include('theme.sidebar')
 @if ($errors->any())
-<div class="alert alert-danger">
-    {{ $error }}
-</div>
+    <div class="alert alert-danger">
+        {{ $error }}
+    </div>
 @endif
 <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -15,22 +15,21 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>MRT Number</th>
-                        <th>User Name</th>
+                        <th>Returned By</th>
+                        <th>Department</th>
                         <th>Item Name</th>
                         <th>Quantity</th>
                         <th>Unit</th>
                         <th>Amount</th>
-                        <th>Remark</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($mrt as $mrt)
                     <tr>
-                        <th>{{ $mrt->id }}</th>
-                        <th>{{ $mrt->users->name }}</th>
-                        <th>
+                        <td>{{ $mrt->users->name }}</td>
+                        <td>{{ $mrt->users->department->name }}</td>
+                        <td>
                             <ul>
                                 @foreach($mrt->items as $item)
                                 <li>
@@ -38,35 +37,30 @@
                                 </li>
                                 @endforeach
                             </ul>
-                        </th>
-                        <th>
+                        </td>
+                        <td>
                             @foreach($mrt->items as $item)
                             {{($item->pivot->quantity)}}<br>
                             @endforeach
-                        </th>
-                        <th>
+                        </td>
+                        <td>
                             @foreach($mrt->items as $item)
                             {{($item->unit)}}<br>
                             @endforeach
-                        </th>
-                        <th>
+                        </td>
+                        <td>
                             @foreach($mrt->items as $item)
                             {{ number_format($item->pivot->amount, 2, '.', ',') }}<br>
                             @endforeach
-                        </th>
-                        <th>
-                            @foreach ($status as $status)
-                                
-                            @endforeach
-                        </th>
-                        <th>
+                        </td>
+                        <td>
                             <form method="POST" action="{{route('admin.users.destroy', $mrt->id)}}">
                                 @csrf
-                                @method('DELETE')
-                                <a href="{{ route('returned.approve', $mrt->id) }}"class="btn btn-success btn-sm">Approved</a>
-                                <input onclick="return confirm('Are you sure?')" type="submit"class="btn btn-danger btn-sm" value="Delete" />
+                                <a href="{{route('returned.mrtForm', $mrt->id)}}" class="btn btn-info btn-sm">review</a>
+                                <input onclick="return confirm('Are you sure?')" type="submit"
+                                    class="btn btn-danger btn-sm" value="Delete" />
                             </form>
-                        </th>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -88,20 +82,6 @@
             <div class="modal-body">
                 <form method="POST" action="{{route('returned.store')}}" class="container-fluid" autocomplete="off">
                     @csrf
-                    <div class="form-group row">
-                        <label for="riv" class="col-sm-2 col-form-label">MRT:</label>
-                        <div class="col-sm-8">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <input type="number" name="mrt" class="form-control" placeholder="Number" required>
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control datepicker" name="mrtDate" placeholder="Date"
-                                        required>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="form-group row">
                         <label for="riv" class="col-sm-2 col-form-label">Employee:</label>
                         <div class="col-sm-9">

@@ -50,6 +50,8 @@ Route::middleware(['auth','warehouse-user'])->group(function(){
     Route::get('get-items/{id}', [AccountabilityController::class, 'getItems']);
     Route::post('returned', [AccountabilityController::class, 'storeMrt'])->name('returned.store');
     Route::get('returned/{mrt_id}/approve', [AccountabilityController::class, 'approveMrt'])->name('returned.approve');
+    Route::get('mrtForm/{id}', [AccountabilityController::class, 'mrtForm'])->name('returned.mrtForm');
+    Route::post('mrtForm/{id}', [AccountabilityController::class, 'confirmMrt']);
 });
 
 //----Employee Module----//

@@ -18,12 +18,12 @@
                     <tbody>
                       @foreach ($users as $row)
                     <tr>
-                        <th>{{$row->name}}</th>
-                        <th>{{$row->email}}</th>
-                        <th>{{$row->department->name}}</th>
-                        <th>
+                        <td>{{$row->name}}</td>
+                        <td>{{$row->email}}</td>
+                        <td>{{$row->department->name}}</td>
+                        <td>
                             <a href="" class="btn btn-info btn-sm">View</a>
-                        </th>
+                        </td>
                     </tr>
                     @endforeach
                     </tbody>
