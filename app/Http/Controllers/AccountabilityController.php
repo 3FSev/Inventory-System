@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Itemwiv;
 use App\Models\Mrt;
 use App\Models\Wiv;
 use App\Models\User;
 use App\Models\Items;
-use App\Models\ItemMrt;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class AccountabilityController extends Controller
@@ -29,13 +26,6 @@ class AccountabilityController extends Controller
         $wiv = Wiv::findOrFail($wiv_id);
         $wiv->update(['received_at' => now()]);
         return redirect()->back()->with('success','Accountability accepted');
-    }
-
-    public function approveMrt($id)
-    {
-        $wiv = Mrt::findOrFail($id);
-        $wiv->update(['approved_at' => now()]);
-        return redirect()->back()->with('success','MRT ticket approved');
     }
 
     public function showMrt(){
@@ -69,51 +59,55 @@ class AccountabilityController extends Controller
         $mrtDate = $request->input('mrtDate');
         $items = $request->input('items');
 
-        $mrt = Mrt::where('id',$mrtId)->first();
+        $mrt = Mrt::findOrFail($mrtId);
         $mrt->mrt_number = $mrtNumber;
         $mrt->mrt_date = $mrtDate;
+        $mrt->update(['approved_at' => now()]);
         $mrt->save();
 
         foreach ($usable as $count => $value) {
             $item_id =  $items[$count];
-            // Update the ItemMrt pivot record
             $item = Items::find($item_id);
             $itemMrtQuantity = $item->mrt->first()->pivot->quantity;
-            $item->mrt()->sync($mrtId, [
-                'usable' => $usable,
-                'unusable' => $unusable
-            ]);
+
+            // Update the ItemMrt pivot record
+            $pivotData = [
+                'usable' => $value,
+                'unusable' => $unusable[$count]
+            ];
+            $item->mrt()->updateExistingPivot($mrtId, $pivotData);
 
              // Add quantity in items
-            $item = Items::find($items[$count]);
+            $item = Items::find($item_id);
             if ($item) {
                 $item->quantity += $value;
                 $item->save();
             }
 
             // Get the item_id wiv record based on quantity and date
-            $wivs = Wiv::join('item_wiv', 'wiv.id', 'item_wiv.wiv_id')
-                ->where('wiv.user_id', $user_id)
-                ->where('item_wiv.item_id',$item_id)
-                ->where('item_wiv.quantity','>',0)
-                ->orderBy('wiv_date','asc');
-                
-            // Deduct quantity of item_wiv
-            foreach ($wivs as $wiv) {
-                if ($itemMrtQuantity <= $wiv->quantity) {
-                    $wiv->quantity -= $itemMrtQuantity;
-                    $wiv->save();
-                    break;
-                } else {
-                    $value -= $wiv->quantity;
-                    $wiv->quantity = 0;
-                    $wiv->save();
+            $wivs = Wiv::whereHas('items', function($query) use ($item_id) {
+                $query->where('item_wiv.item_id', $item_id)->where('item_wiv.quantity', '>', 0);
+            })
+                ->where('user_id', $user_id)
+                ->orderBy('wiv_date', 'asc')
+                ->get();
+
+            $itemMrtQuantityRemaining = $itemMrtQuantity;
+            foreach($wivs as $wiv){
+                foreach($wiv->items as $wivItem){
+                    if ($wivItem->mrt->contains('id', $mrtId)) {
+                        $quantityToDeduct = min($wivItem->pivot->quantity, $itemMrtQuantityRemaining);
+                        $wivItem->pivot->update(['quantity' => $wivItem->pivot->quantity - $quantityToDeduct]);
+                        $itemMrtQuantityRemaining -= $quantityToDeduct;
+
+                        if ($itemMrtQuantityRemaining <= 0) {
+                            break 2;
+                        }
+                    }
                 }
-                dd($wivs->first());
             }
         }
-
-        return redirect()->back()->with('success','Materials returned succesfully');
+        return redirect()->route('returned.show')->with('success','Materials returned succesfully');
 
     }
 

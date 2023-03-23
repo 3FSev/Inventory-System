@@ -39,7 +39,7 @@ Route::middleware(['auth','warehouse-user'])->group(function(){
     Route::get('warehouse', [ItemsController::class, 'dashboard']);
     Route::get('items', [ItemsController::class, 'index']);
     Route::get('employee', [ItemsController::class, 'users']);
-    Route::post('items', [ItemsController::class, 'store']);
+    Route::post('items', [ItemsController::class, 'store'])->name('items.store');
     Route::delete('items/{id}', [ItemsController::class, 'destroy'])->name('destroy');
     Route::get('show/{id}', [ItemsController::class, 'show'])->name('show');
     Route::get('item_edit/{id}', [ItemsController::class, 'edit'])->name('edit');
@@ -49,7 +49,6 @@ Route::middleware(['auth','warehouse-user'])->group(function(){
     Route::get('returned', [AccountabilityController::class, 'showMrt'])->name('returned.show');
     Route::get('get-items/{id}', [AccountabilityController::class, 'getItems']);
     Route::post('returned', [AccountabilityController::class, 'storeMrt'])->name('returned.store');
-    Route::get('returned/{mrt_id}/approve', [AccountabilityController::class, 'approveMrt'])->name('returned.approve');
     Route::get('mrtForm/{id}', [AccountabilityController::class, 'mrtForm'])->name('returned.mrtForm');
     Route::post('mrtForm/{id}', [AccountabilityController::class, 'confirmMrt']);
 });

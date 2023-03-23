@@ -10,10 +10,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Items extends Model
 {
     use HasFactory;
-    public $timestamps = false;
     protected $fillable = [
         'item_name',
         'quantity',
+        'unit',
         'category_id',
         'price',
         'description',

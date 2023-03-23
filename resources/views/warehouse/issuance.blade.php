@@ -19,7 +19,7 @@
                 <thead>
                     <tr>
                         <th>WIV Number</th>
-                        <th>User Name</th>
+                        <th>Employee Name</th>
                         <th>Item Name</th>
                         <th>Quantity</th>
                         <th>Amount</th>
@@ -141,6 +141,7 @@
                                 <tr>
                                     <th>Item</th>
                                     <th>Quantity</th>
+                                    <th>Unit</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>

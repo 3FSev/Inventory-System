@@ -1,5 +1,4 @@
 @include('theme.sidebar')
-
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h4 class="m-2 font-weight-bold text-primary">Items&nbsp;<a href="#" data-toggle="modal" data-target="#aModal"
@@ -17,6 +16,7 @@
                         <th>Item Code</th>
                         <th>Name</th>
                         <th>Quantity</th>
+                        <th>Unit</th>
                         <th>Category</th>
                         <th>Action</th>
                     </tr>
@@ -27,6 +27,7 @@
                         <td>{{$row->id}}</td>
                         <td>{{$row->name}}</td>
                         <td>{{$row->quantity}}</td>
+                        <td>{{$row->unit}}</td>
                         <td>{{$row->category->name}}</td>
                         <td>
                             <form method="POST" action="{{route('destroy', $row->id)}}">
@@ -57,7 +58,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form role="form" method="POST" action="/items">
+                <form role="form" method="POST" action="{{route('items.store')}}">
                     @csrf
                     <div class="form-group">
                         <input class="form-control" placeholder="Name" name="name" required>
@@ -65,6 +66,9 @@
                     <div class="form-group">
                         <input type="number" min="1" max="999999999" class="form-control" placeholder="Quantity"
                             name="quantity" required>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" placeholder="Unit" name="unit" required>
                     </div>
                     <div class="form-group">
                         {!! Form::select('category_id', $category, null, ['class' => 'form-control']) !!}
@@ -82,6 +86,7 @@
                         <button type="submit" class="btn btn-success"><i class="fa fa-check fa-fw"></i>Save</button>
                         <button type="reset" class="btn btn-danger"><i class="fa fa-times fa-fw"></i>Reset</button>
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    </div>
                 </form>
             </div>
         </div>

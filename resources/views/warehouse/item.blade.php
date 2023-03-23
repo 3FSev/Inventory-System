@@ -60,6 +60,18 @@
             <div class="form-group row text-left">
                 <div class="col-sm-3 text-primary">
                     <h5>
+                        Unit<br>
+                    </h5>
+                </div>
+                <div class="col-sm-9">
+                    <h5>
+                        {{$item->unit}}<br>
+                    </h5>
+                </div>
+            </div>
+            <div class="form-group row text-left">
+                <div class="col-sm-3 text-primary">
+                    <h5>
                         Category<br>
                     </h5>
                 </div>

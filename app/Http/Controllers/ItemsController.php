@@ -29,17 +29,16 @@ class ItemsController extends Controller
     }
 
     public function store(Request $request){
-        $formField = $request->validate([
-            'item_name' => 'required',
-            'quantity' => 'required',
-            'category_id' => 'required',
-            'price' => 'required',
-            'description' => 'required'
-        ]);
+            $item = new Items;
+            $item->name = $request->input('name');
+            $item->unit = $request->input('unit');
+            $item->description = $request->input('description');
+            $item->category_id = $request->input('category_id');
+            $item->price = $request->input('price');
+            $item->quantity = $request->input('quantity');
+            $item->save();
 
-        Items::create($formField);
-
-        return redirect()->back()->with('succes','Item created successfully');
+        return redirect()->back();
     }
 
     public function destroy($id){
@@ -68,6 +67,7 @@ class ItemsController extends Controller
         $item->category_id = $request->input('category_id');
         $item->price = $request->input('price');
         $item->quantity = $request->input('quantity');
+        $item->unit = $request->input('unit');
         $item->save();
         return redirect('items')->with('success', 'Item updated successfully');
     }
