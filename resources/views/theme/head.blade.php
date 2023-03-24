@@ -44,4 +44,9 @@
 
   <!-- Custom styles for this page -->
   <link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+
+  <!-- Custom styles for sidebar dropdown -->
+  <link rel="stylesheet" href="css/sb-admin-2.css">
+  <script src="js/sb-admin-2.js" defer></script>
+  
 </head>
