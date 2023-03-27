@@ -11833,3 +11833,42 @@ body.sidebar-toggled footer.sticky-footer {
 .table-cell {
   width: 300px;
 }
+
+/* css of dropdown sidebar */
+.menu  {
+    position:relative;
+    width:auto;
+    text-align: center;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    color:rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+  }
+  
+    .list{
+      max-height: 0;
+      transition: max-height .3s ease-out;
+      overflow: hidden;
+      margin-left: -120px;
+    }
+  
+   .active {
+        max-height: 300px;
+        transition: max-height 0.3s ease-in;
+      } 
+  
+  .wrapper {
+    margin: 0px auto;
+    width:100%;
+    height: auto;
+  }
+
+  .list li {
+    list-style-type: none;
+  }
+
+  .list a {
+    font-size: 0.85rem;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+  }

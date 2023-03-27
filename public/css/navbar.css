@@ -1,0 +1,24 @@
+.navbar-main {
+    background-color: #82CD47;
+  }
+  
+  .navbar-main a {
+    color: #FFFFFF;
+  }
+  
+  .navbar-main a:hover {
+    color: #FFFFFF;
+  }
+  
+  .navbar-main .dropdown-menu {
+    background-color: #82CD47;
+  }
+  
+  .navbar-main .dropdown-item {
+    color: #FFFFFF;
+  }
+  
+  .navbar-main .dropdown-item:hover {
+    color: #FFFFFF;
+    background-color: #6dbb3f;
+  }
