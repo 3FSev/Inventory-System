@@ -67,3 +67,4 @@
     </ul>
     <!-- End of Sidebar -->
 @include('theme.topbar')
+@include('flash-message')

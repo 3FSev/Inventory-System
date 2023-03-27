@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Itemwiv;
 use App\Models\Mrt;
 use App\Models\Wiv;
 use App\Models\User;
 use App\Models\Items;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class AccountabilityController extends Controller
 {
@@ -92,6 +94,7 @@ class AccountabilityController extends Controller
                 ->orderBy('wiv_date', 'asc')
                 ->get();
 
+            // Deduct the quantity in item_wiv
             $itemMrtQuantityRemaining = $itemMrtQuantity;
             foreach($wivs as $wiv){
                 foreach($wiv->items as $wivItem){
@@ -126,6 +129,7 @@ class AccountabilityController extends Controller
         for ($i = 0; $i < count($items); $i++) {
             $item_id = $items[$i];
             $item = Items::find($item_id);
+
             $price = $item->price;
             $quantity_to_return = $quantities[$i];
             $amount = $price * $quantity_to_return;
@@ -139,4 +143,5 @@ class AccountabilityController extends Controller
 
         return redirect()->back()->with('success', 'MRT Ticket Created');
     }
+
 }

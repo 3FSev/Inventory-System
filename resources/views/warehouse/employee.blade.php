@@ -22,7 +22,7 @@
                         <td>{{$row->email}}</td>
                         <td>{{$row->department->name}}</td>
                         <td>
-                            <a href="" class="btn btn-info btn-sm">View</a>
+                          <a href="{{route('showEmployee', $row->id)}}" class="btn btn-info btn-sm">View</a>
                         </td>
                     </tr>
                     @endforeach

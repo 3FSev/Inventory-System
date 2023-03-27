@@ -1,9 +1,4 @@
 @include('theme.sidebar')
-@if ($errors->any())
-    <div class="alert alert-danger">
-        {{ $error }}
-    </div>
-@endif
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h4 class="m-2 font-weight-bold text-primary">MRT&nbsp;<a href="#" data-toggle="modal" data-target="#aModal"

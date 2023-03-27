@@ -24,7 +24,7 @@ class ItemsController extends Controller
     }
 
     public function users(){
-        $users = User::whereNotNull('approved_at')->with(['department'])->get();
+        $users = User::whereNotNull('approved_at')->where('role_id', 1)->get();
         return view('warehouse/employee', compact('users'));
     }
 
@@ -47,9 +47,22 @@ class ItemsController extends Controller
     }
 
     public function show($id){
+        $wiv = Wiv::whereHas('items', function ($query) use ($id) {
+            $query->where('item_id', $id);
+        })->get();
+
+        $item = Items::find($id);
+
         return view('warehouse/item', [
-            'item' => Items::find($id)
+            'item' => $item,
+            'wivs' => $wiv,
         ]);
+    }
+
+    public function showEmployee($id){
+        $wivs = Wiv::where('user_id', $id)->get();
+
+        return view('warehouse/wiv', compact('wivs'));
     }
 
     public function edit($id){

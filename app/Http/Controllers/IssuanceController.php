@@ -82,4 +82,11 @@ class IssuanceController extends Controller
 
         return redirect()->back()->with('error', 'The WIV number is already in use.');
     }
+
+    public function removeItem(Request $request)
+    {
+        $wiv = Wiv::findOrFail($request->user_id);
+        $wiv->items()->detach($request->role_id);
+        return redirect()->back()->with('success', 'Role removed successfully');
+    }
 }

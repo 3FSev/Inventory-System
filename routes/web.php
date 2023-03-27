@@ -39,6 +39,7 @@ Route::middleware(['auth','warehouse-user'])->group(function(){
     Route::get('warehouse', [ItemsController::class, 'dashboard']);
     Route::get('items', [ItemsController::class, 'index']);
     Route::get('employee', [ItemsController::class, 'users']);
+    Route::get('wiv/{id}', [ItemsController::class, 'showEmployee'])->name('showEmployee');;
     Route::post('items', [ItemsController::class, 'store'])->name('items.store');
     Route::delete('items/{id}', [ItemsController::class, 'destroy'])->name('destroy');
     Route::get('show/{id}', [ItemsController::class, 'show'])->name('show');

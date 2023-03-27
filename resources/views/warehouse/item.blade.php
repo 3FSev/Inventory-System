@@ -53,14 +53,14 @@
                 </div>
                 <div class="col-sm-9">
                     <h5>
-                        {{$item->price}}<br>
+                        {{ number_format($item->price, 2, '.', ',') }}<br><br>
                     </h5>
                 </div>
             </div>
             <div class="form-group row text-left">
                 <div class="col-sm-3 text-primary">
                     <h5>
-                        Unit<br>
+                        Unit Type<br>
                     </h5>
                 </div>
                 <div class="col-sm-9">
@@ -80,6 +80,43 @@
                         {{$item->category->name}}<br>
                     </h5>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div></div>
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Wiv Number</th>
+                            <th>Emplpoyee Name</th>
+                            <th>Email</th>
+                            <th>Department</th>
+                            <th>Quantity Assigned</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($wivs as $wiv)
+                            <td>
+                                {{$wiv->id}}
+                            </td>
+                            <td>
+                                {{$wiv->users->name}}
+                            </td>
+                            <td>
+                                {{$wiv->users->email}}
+                            </td>
+                            <td>
+                                {{$wiv->users->department->name}}
+                            </td>
+                            <td>
+                                
+                            </td>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

@@ -48,6 +48,15 @@
                 </div>
                 <div class="form-group row text-left text-warning">
                     <div class="col-sm-3" style="padding-top: 5px;">
+                        Unit:
+                    </div>
+                    <div class="col-sm-9">
+                        <input class="form-control" name="unit" value="{{$item->unit}}"
+                            required>
+                    </div>
+                </div>
+                <div class="form-group row text-left text-warning">
+                    <div class="col-sm-3" style="padding-top: 5px;">
                         Price:
                     </div>
                     <div class="col-sm-9">
