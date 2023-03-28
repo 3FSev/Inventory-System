@@ -115,9 +115,11 @@
                                                             <td>{{$pending->id}}</td>
                                                             <td>{{$pending->wiv_date}}</td>
                                                             <td>
-                                                                @foreach ($pending->items as $item)
-                                                                {{$item->name}}
-                                                                @endforeach
+                                                                <ul>
+                                                                    @foreach ($pending->items as $item)
+                                                                        <li>{{$item->name}}</li>
+                                                                    @endforeach
+                                                                </ul>
                                                             </td>
                                                             <td>
                                                                 @foreach($pending->items as $item)

@@ -12,9 +12,10 @@ class IssuanceController extends Controller
     public function show(){
         $users = User::where('role_id', 1)->whereNotNull('approved_at')->get();
         $items = Items::where('quantity', '>=', 1)->get();
-        $wiv = Wiv::all();
+        $wiv = Wiv::whereNull('received_at')->get();
+        $approvedWiv = Wiv::whereNotNull('received_at')->get();
 
-        return view('warehouse/issuance', compact('items', 'users','wiv'));
+        return view('warehouse/issuance', compact('items', 'users','wiv','approvedWiv'));
     }
 
     public function store(Request $request)

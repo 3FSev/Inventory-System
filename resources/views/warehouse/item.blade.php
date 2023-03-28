@@ -99,6 +99,7 @@
                     </thead>
                     <tbody>
                         @foreach ($wivs as $wiv)
+                        <tr>
                             <td>
                                 {{$wiv->id}}
                             </td>
@@ -114,6 +115,7 @@
                             <td>
                                 
                             </td>
+                        </tr>
                         @endforeach
                     </tbody>
                 </table>

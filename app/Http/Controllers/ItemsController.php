@@ -60,7 +60,7 @@ class ItemsController extends Controller
     }
 
     public function showEmployee($id){
-        $wivs = Wiv::where('user_id', $id)->get();
+        $wivs = Wiv::where('user_id', $id)->whereNotNull('received_at')->get();
 
         return view('warehouse/wiv', compact('wivs'));
     }

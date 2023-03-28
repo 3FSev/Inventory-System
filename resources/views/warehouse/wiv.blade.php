@@ -17,6 +17,16 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
+<!-- TableExport library -->
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
+
+
+
 <!-- Custom scripts for all pages-->
 <script src="../js/sb-admin-2.js"></script>
 @include('theme.head')
@@ -27,7 +37,7 @@
             <h5>ORIENTAL MINDORO ELECTRIC COOPERATIVE, INC</h5>
             <h5>(O R M E C O)</h5>
             <h6>Simaron, Calapan City</h6><br>
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <table class="table table-bordered" id="wivTable" width="100%" cellspacing="0">
             <thead>
                 <tr>
                     <th>WIV#</th>
@@ -44,6 +54,7 @@
             </thead>
             <tbody>
                @foreach ($wivs as $wiv)
+               <tr>
                     <td>
                         {{$wiv->id}}
                     </td>
@@ -84,6 +95,7 @@
                     <td>
                         
                     </td>
+                </tr>
                @endforeach
             </tbody>
         </table>

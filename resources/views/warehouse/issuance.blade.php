@@ -1,62 +1,146 @@
 @include('theme.sidebar')
-@if ($errors->any())
-    <div class="alert alert-danger">
-        {{ $error }}
-    </div>
-@endif
-<div class="card shadow mb-4">
-    <div class="card-header py-3">
-        <h4 class="m-2 font-weight-bold text-primary">Issuance&nbsp;<a href="#" data-toggle="modal"
-                data-target="#aModal" type="button" class="btn btn-primary bg-gradient-primary"
-                style="border-radius: 0px;"><i class="fas fa-fw fa-plus">
-                </i>
-            </a>
-        </h4>
-    </div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>WIV Number</th>
-                        <th>Employee Name</th>
-                        <th>Item Name</th>
-                        <th>Quantity</th>
-                        <th>Amount</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($wiv as $wiv)
-                    <tr>
-                        <td>{{ $wiv->id }}</td>
-                        <td>{{ $wiv->users->name }}</td>
-                        <td>
-                            <ul>
-                                @foreach($wiv->items as $item)
-                                <li>
-                                    {{($item->name)}}
-                                </li>
-                                @endforeach
-                            </ul>
-                        </td>
-                        <td>
-                            @foreach($wiv->items as $item)
-                            {{($item->pivot->quantity)}}<br>
-                            @endforeach
-                        </td>
-                        <td>
-                            @foreach($wiv->items as $item)
-                            {{ number_format($item->pivot->amount, 2, '.', ',') }}<br>
-                            @endforeach
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+
+<body>
+    <!-- main content area start -->
+    <div class="main-content">
+        <div class="main-content-inner">
+            <!--  Nav area start -->
+            <div class="card">
+                <div class="card-body">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active " id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                                aria-controls="profile" aria-selected="true"><b><i class="fa-solid fa-table"></i>
+                                    WIV
+                                </b>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                                aria-controls="home" aria-selected="true"><b><i class="fa-solid fa-table"></i>
+                                    PENDING/CREATE WIV
+                                </b>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- additional content area start -->
+                    <div class="tab-content mt-3" id="myTabContent">
+                        <!-- DATA TABLE -->
+                        <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="col-12">
+                                <div class="tab-content mt-5">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>WIV Number</th>
+                                                    <th>Employee Name</th>
+                                                    <th>Item Name</th>
+                                                    <th>Quantity. Unit</th>
+                                                    <th>Amount</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($approvedWiv as $aWiv)
+                                                <tr>
+                                                    <td>{{$aWiv->id}}</td>
+                                                    <td>{{$aWiv->name}}</td>
+                                                    <td>
+                                                        <ul>
+                                                            @foreach($aWiv->items as $item)
+                                                            <li>
+                                                                {{($item->name)}}
+                                                            </li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </td>
+                                                    <td>
+                                                        @foreach($aWiv->items as $item)
+                                                        {{($item->pivot->quantity)}}{{($item->unit)}}<br>
+                                                        @endforeach
+                                                    </td>
+                                                    <td>
+                                                        @foreach($aWiv->items as $item)
+                                                        {{ number_format($item->pivot->amount, 2, '.', ',') }}<br>
+                                                        @endforeach
+                                                    </td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--- Personal Information Page End---->
+
+                        <!--- Accountability Page Start---->
+                        <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="col-12">
+                                <div class="tab-content mt-5">
+
+                                    <div class="card-header py-3">
+                                        <h4 class="m-2 font-weight-bold text-primary">Issuance&nbsp;<a href="#"
+                                                data-toggle="modal" data-target="#aModal" type="button"
+                                                class="btn btn-primary bg-gradient-primary"
+                                                style="border-radius: 0px;"><i class="fas fa-fw fa-plus">
+                                                </i>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>WIV Number</th>
+                                                    <th>Employee Name</th>
+                                                    <th>Item Name</th>
+                                                    <th>Quantity</th>
+                                                    <th>Amount</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($wiv as $wiv)
+                                                <tr>
+                                                    <td>{{ $wiv->id }}</td>
+                                                    <td>{{ $wiv->users->name }}</td>
+                                                    <td>
+                                                        <ul>
+                                                            @foreach($wiv->items as $item)
+                                                            <li>
+                                                                {{($item->name)}}
+                                                            </li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </td>
+                                                    <td>
+                                                        @foreach($wiv->items as $item)
+                                                        {{($item->pivot->quantity)}}<br>
+                                                        @endforeach
+                                                    </td>
+                                                    <td>
+                                                        @foreach($wiv->items as $item)
+                                                        {{ number_format($item->pivot->amount, 2, '.', ',') }}<br>
+                                                        @endforeach
+                                                    </td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-@include('theme.footer')
+    <!-- main content area end -->
+    @include('theme.footer')
+</body>
 <!-- Issuance Modal-->
 <div class="modal fade" id="aModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -112,7 +196,8 @@
                         <div class="col-sm-8">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <input type="number" name="po" class="form-control" placeholder="Number" required required>
+                                    <input type="number" name="po" class="form-control" placeholder="Number" required
+                                        required>
                                 </div>
                                 <div class="col-sm-6">
                                     <input type="text" class="form-control datepicker" name="poDate" placeholder="Date"
@@ -150,7 +235,7 @@
                                     <td>
                                         <select name="item[]" class="form-control">
                                             @foreach ($items as $item)
-                                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
                                             @endforeach
                                         </select>
                                     </td>
@@ -175,3 +260,5 @@
         </div>
     </div>
 </div>
+
+</html>
