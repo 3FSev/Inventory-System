@@ -29,7 +29,7 @@ Route::middleware(['auth','ver'])->group(function(){
 Route::middleware(['auth','admin-user'])->group(function(){
     Route::get('admin', [UserController::class, 'dashboard']);
     Route::get('ver', [UserController::class, 'verified']);
-    Route::post('ver', [UserController::class, 'store'])->name('admin.users.store');
+    Route::post('ver', [UserController::class, 'store'])->name('store');
     Route::get('unv', [UserController::class, 'index'])->name('admin.users.index');
     Route::get('unv/{user_id}/approve', [UserController::class, 'approve'])->name('admin.users.approve');
     Route::delete('unv/{user_id}/destroy', [UserController::class, 'destroy'])->name('admin.users.destroy');
