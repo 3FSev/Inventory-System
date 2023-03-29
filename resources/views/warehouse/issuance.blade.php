@@ -1,6 +1,4 @@
 @include('theme.sidebar')
-
-<body>
     <!-- main content area start -->
     <div class="main-content">
         <div class="main-content-inner">
@@ -56,7 +54,7 @@
                                                     </td>
                                                     <td>
                                                         @foreach($aWiv->items as $item)
-                                                        {{($item->pivot->quantity)}}{{($item->unit)}}<br>
+                                                        {{($item->pivot->quantity)}} {{($item->unit)}}<br>
                                                         @endforeach
                                                     </td>
                                                     <td>
@@ -140,7 +138,6 @@
     </div>
     <!-- main content area end -->
     @include('theme.footer')
-</body>
 <!-- Issuance Modal-->
 <div class="modal fade" id="aModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -260,5 +257,3 @@
         </div>
     </div>
 </div>
-
-</html>

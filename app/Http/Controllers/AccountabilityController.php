@@ -31,10 +31,11 @@ class AccountabilityController extends Controller
     }
 
     public function showMrt(){
-        $mrt = Mrt::all();
+        $mrt = Mrt::whereNotNull('approved_at')->get();
+        $pending = Mrt::whereNull('approved_at')->get();
         $users = User::whereNotNull('approved_at')->where('role_id', 1)->get();
 
-        return view('warehouse/mrt-request', compact('mrt','users'));
+        return view('warehouse/mrt-request', compact('mrt','users','pending'));
     }
 
     public function getItems($id)
@@ -64,7 +65,7 @@ class AccountabilityController extends Controller
         $mrt = Mrt::findOrFail($mrtId);
         $mrt->mrt_number = $mrtNumber;
         $mrt->mrt_date = $mrtDate;
-        $mrt->update(['approved_at' => now()]);
+        $mrt->approved_at = now();
         $mrt->save();
 
         foreach ($usable as $count => $value) {
