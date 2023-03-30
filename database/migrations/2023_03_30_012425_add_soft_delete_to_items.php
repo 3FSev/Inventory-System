@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('mrt', function (Blueprint $table) {
-            $table->dropColumn('status_id');
+        Schema::table('items', function (Blueprint $table) {
+            $table->softDeletes();
         });
     }
 
@@ -21,8 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('mrt', function (Blueprint $table) {
-            $table->unsignedBigInteger('status_id');
+        Schema::table('items', function (Blueprint $table) {
+            $table->dropSoftDeletes();
         });
     }
 };

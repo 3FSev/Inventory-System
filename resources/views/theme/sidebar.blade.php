@@ -54,13 +54,15 @@
       <li class="nav-item">
         <a class="nav-link" href="returned">
           <i class="fas fa-fw fa-table"></i>
-          <span>MRT</span></a>
+          <span>MRT</span>
+        </a>
       </li>
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
         
       </div>
     </ul>
+  </div>
     <!-- End of Sidebar -->
 @include('theme.topbar')
 @include('flash-message')

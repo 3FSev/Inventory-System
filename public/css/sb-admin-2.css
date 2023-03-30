@@ -198,6 +198,7 @@ pre {
   overflow: auto;
 }
 
+
 figure {
   margin: 0 0 1rem;
 }
@@ -11873,3 +11874,45 @@ body.sidebar-toggled footer.sticky-footer {
     text-decoration: none;
     color: rgba(255, 255, 255, 0.8);
   }
+
+  #preloader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 99999;
+    height: 100%;
+    width: 100%;
+    background: #fff;
+    display: flex;
+}
+.loader{
+    margin: auto;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    position: relative;
+}
+.loader:before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: #000;
+    border-radius: 50%;
+    opacity: 0;
+    animation: popin 1.5s linear infinite 0s;
+}
+.loader:after{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: #000;
+    border-radius: 50%;
+    opacity: 0;
+    animation: popin 1.5s linear infinite 0.5s;
+}

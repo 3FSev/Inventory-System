@@ -6,10 +6,13 @@ use App\Models\Wiv;
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Items extends Model
 {
     use HasFactory;
+
+    use SoftDeletes;
     protected $fillable = [
         'item_name',
         'quantity',
@@ -18,6 +21,8 @@ class Items extends Model
         'price',
         'description',
     ];
+
+    protected $dates = ['deleted_at'];
 
     public function category()
     {
