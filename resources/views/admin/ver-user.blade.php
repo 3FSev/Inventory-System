@@ -50,7 +50,7 @@
               </button>
           </div>
           <div class="modal-body">
-              <form method="POST" action="ver" class="container-fluid" autocomplete="off">
+              <form method="POST" action="{{route(admin.users.store)}}" class="container-fluid" autocomplete="off">
                   @csrf
                   <div class="form-group">
                     <input type="text" class="form-control" name="name" placeholder="Name" required>
