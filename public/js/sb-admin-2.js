@@ -47,20 +47,20 @@
     });
 
     // Multiple inpit table
-    $(document).ready(function() {
-      // Add new row to table
-      $('.btn-add-item').click(function() {
-          var row = $('.item-row').clone();
-          row.removeClass('item-row');
-          row.find('.remove-row').click(function() {
-              $(this).closest('tr').remove();
-          });
-          $('#items-table tbody').append(row);
-      });
+    $(document).ready(function () {
+        // Add new row to table
+        $('.btn-add-item').click(function () {
+            var row = $('.item-row').clone();
+            row.removeClass('item-row');
+            row.find('.remove-row').click(function () {
+                $(this).closest('tr').remove();
+            });
+            $('#items-table tbody').append(row);
+        });
     });
 
     // Datepicker
-    $(document).ready(function(){
+    $(document).ready(function () {
         $('.datepicker').datepicker({
             dateFormat: 'yy-mm-dd',
             autoclose: true,
@@ -69,15 +69,15 @@
     });
 
     // Fetch assigned items to user
-    $(document).ready(function() {
-        $('.user-mrt').on('change', function() {
+    $(document).ready(function () {
+        $('.user-mrt').on('change', function () {
             var id = $(this).val();
 
             $.ajax({
                 url: '/get-items/' + id,
                 type: 'GET',
                 dataType: 'json',
-                success: function(data) {
+                success: function (data) {
                     var items_dropdown = $('select[name="item[]"]');
 
                     console.log('User selected:', items_dropdown);
@@ -86,7 +86,7 @@
                     items_dropdown.empty();
 
                     // Add new options based on the fetched items
-                    $.each(data, function(index, item) {
+                    $.each(data, function (index, item) {
                         items_dropdown.append($('<option>', {
                             value: item.id,
                             text: item.name
@@ -94,32 +94,30 @@
                     });
 
                 },
-                error: function(xhr, textStatus, errorThrown) {
+                error: function (xhr, textStatus, errorThrown) {
                     console.log('Error fetching items:', errorThrown);
                 }
             });
         });
     });
 
-    $(document).ready(function() {
-        $('.usable-input').on('input', function() {
-          var quantity = $(this).attr('max');
-          var usable = $(this).val();
-          var nonUsable = quantity - usable;
-          console.log(nonUsable);
-          $(this).closest('tr').find('.non-usable-input').val(nonUsable);
+    $(document).ready(function () {
+        $('.usable-input').on('input', function () {
+            var quantity = $(this).attr('max');
+            var usable = $(this).val();
+            var nonUsable = quantity - usable;
+            console.log(nonUsable);
+            $(this).closest('tr').find('.non-usable-input').val(nonUsable);
         });
-      });
+    });
 
-      $(window).on('load', function() {
-        $('.usable-input').each(function() {
-          var quantity = $(this).attr('max');
-          var usable = $(this).val();
-          var nonUsable = quantity - usable;
-          $(this).closest('tr').find('.non-usable-input').val(nonUsable);
+    $(window).on('load', function () {
+        $('.usable-input').each(function () {
+            var quantity = $(this).attr('max');
+            var usable = $(this).val();
+            var nonUsable = quantity - usable;
+            $(this).closest('tr').find('.non-usable-input').val(nonUsable);
         });
-      });
-
-    
+    });
 
 })(jQuery); // End of use strict

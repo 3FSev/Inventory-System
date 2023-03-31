@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Department;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -52,5 +53,30 @@ class UserController extends Controller
         $user->save();
 
         return redirect()->back()->with('success','User created successfully');
+    }
+
+    public function edit($id)
+    {
+        $user = User::findOrFail($id);
+        $department = Department::all();
+        $roles = Role::all();
+
+        return view('admin/update-employee', compact('user','department','roles'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->dept_id = $request->input('department');
+        $user->role_id = $request->input('role');
+        $password = $request->input('password');
+        if (!empty($password)) {
+            $user->password = bcrypt($password);
+        }
+        $user->save();
+
+        return redirect('../ver')->with('info','User information updated');
     }
 }

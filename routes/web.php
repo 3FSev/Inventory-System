@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('test', [IssuanceController::class, 'test'])->name('issuance.test');
+
 //----Waiting Page----//
 Route::middleware(['auth','ver'])->group(function(){
     Route::get('approval', function() {
@@ -28,8 +30,10 @@ Route::middleware(['auth','ver'])->group(function(){
 //----Admin Module----//
 Route::middleware(['auth','admin-user'])->group(function(){
     Route::get('admin', [UserController::class, 'dashboard']);
-    Route::get('ver', [UserController::class, 'verified']);
+    Route::get('ver', [UserController::class, 'verified'])->name('admin.users.verified');
     Route::post('ver', [UserController::class, 'store'])->name('admin.users.store');
+    Route::get('user/{id}', [UserController::class, 'edit'])->name('admin.users.edit');
+    Route::post('user/{id}', [UserController::class, 'update'])->name('admin.users.update');
     Route::get('unv', [UserController::class, 'index'])->name('admin.users.index');
     Route::get('unv/{user_id}/approve', [UserController::class, 'approve'])->name('admin.users.approve');
     Route::delete('unv/{user_id}/destroy', [UserController::class, 'destroy'])->name('admin.users.destroy');
