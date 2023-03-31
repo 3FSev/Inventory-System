@@ -32,24 +32,37 @@
         Tables
       </div>
       <!-- Tables Buttons -->
-      <li class="nav-item">
-        <a class="nav-link" href="ver">
-          <i class="fas fa-fw fa-user"></i>
-          <span>Verified Accounts</span></a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="unv">
-          <i class="fas fa-fw fa-user"></i>
-          <span>Unverified Accounts</span></a>
-      </li>
-
+      <div class="wrapper">
+        <div class="menu" id="menu">
+          <ul class="nav">
+            <li class="nav-item">
+              <a class="nav-link with-sub">
+                <i class="fas fa-fw fa-user"></i>
+                <span>Manage Users</span>
+              </a>
+              <ul class="list">
+                <li><a href="ver">Users List</a></li>
+                <li><a href="unv">Unverified Users</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link with-sub">
+                <i class="fas fa-fw fa-database"></i>
+                <span>Restore Data</span>
+              </a>
+              <ul class="list">
+                <li><a href="deleted-users">Users</a></li>
+                <li><a href="deleted-items">Items</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
       </div>
 
     </ul>

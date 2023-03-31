@@ -33,36 +33,48 @@
         Tables
       </div>
       <!-- Tables Buttons -->
-      <li class="nav-item">
-        <a class="nav-link" href="employee">
-          <i class="fas fa-fw fa-user"></i>
-          <span>Employee</span></a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="items">
-          <i class="fas fa-fw fa-archive"></i>
-          <span>Inventory</span></a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="issuance">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Issuance</span></a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="returned">
-          <i class="fas fa-fw fa-table"></i>
-          <span>MRT</span>
-        </a>
-      </li>
+      <div class="wrapper">
+        <div class="menu" id="menu">
+          <ul class="nav">
+            <li class="nav-item">
+              <a class="nav-link" href="employee">
+                <i class="fas fa-fw fa-user"></i>
+                <span>Employee</span>
+              </a>
+            <li class="nav-item">
+              <a class="nav-link" href="items">
+                <i class="fas fa-fw fa-box"></i>
+                <span>Warehouse</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link with-sub">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Manage WIV</span>
+              </a>
+              <ul class="list">
+                <li><a href="wivList">WIV List</a></li>
+                <li><a href="issuance">Issuance</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link with-sub">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Manage MRT</span>
+              </a>
+              <ul class="list">
+                <li><a href="returned">View MRT</a></li>
+                <li><a href="mrt-ticket">Create/Approve MRT</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
         
       </div>
     </ul>
-  </div>
     <!-- End of Sidebar -->
 @include('theme.topbar')
 @include('flash-message')

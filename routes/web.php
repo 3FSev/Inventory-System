@@ -3,6 +3,7 @@
 use App\Http\Controllers\AccountabilityController;
 use App\Http\Controllers\IssuanceController;
 use App\Http\Controllers\ItemsController;
+use App\Http\Controllers\RecoveryController;
 use App\Http\Controllers\ReturnedItemCotroller;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -37,6 +38,10 @@ Route::middleware(['auth','admin-user'])->group(function(){
     Route::get('unv', [UserController::class, 'index'])->name('admin.users.index');
     Route::get('unv/{user_id}/approve', [UserController::class, 'approve'])->name('admin.users.approve');
     Route::delete('unv/{user_id}/destroy', [UserController::class, 'destroy'])->name('admin.users.destroy');
+    Route::get('deleted-users', [RecoveryController::class, 'deletedUsers'])->name('admin.deletedUsers');
+    Route::get('deleted-users/{id}/restore', [RecoveryController::class, 'recoverDeletedUsers'])->name('admin.deletedUsers.recover');
+    Route::get('deleted-items', [RecoveryController::class, 'deletedItems'])->name('admin.deletedItems');
+    Route::get('deleted-items/{id}/restore', [RecoveryController::class, 'recoverDeletedItems'])->name('admin.deletedItems.recover');
 });
 
 //----Warehouse Module----//
@@ -52,7 +57,9 @@ Route::middleware(['auth','warehouse-user'])->group(function(){
     Route::post('item_edit/{id}', [ItemsController::class, 'update']);
     Route::get('issuance', [IssuanceController::class, 'show'])->name('issuance.show');
     Route::post('issuance', [IssuanceController::class, 'store'])->name('issuance.store');
+    Route::get('wivList', [IssuanceController::class, 'showWiv'])->name('issuance.showWiv');
     Route::get('returned', [AccountabilityController::class, 'showMrt'])->name('returned.show');
+    Route::get('mrt-ticket', [AccountabilityController::class, 'mrtTicket'])->name('returned.mrt-ticket');
     Route::get('get-items/{id}', [AccountabilityController::class, 'getItems']);
     Route::post('returned', [AccountabilityController::class, 'storeMrt'])->name('returned.store');
     Route::get('mrtForm/{id}', [AccountabilityController::class, 'mrtForm'])->name('returned.mrtForm');

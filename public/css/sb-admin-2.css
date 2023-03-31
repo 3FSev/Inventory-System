@@ -4343,7 +4343,7 @@ input[type="button"].btn-block {
   list-style: none;
 }
 
-.nav-link {
+.nav-link{
   display: block;
   padding: 0.5rem 1rem;
 }
@@ -11836,83 +11836,44 @@ body.sidebar-toggled footer.sticky-footer {
   width: 300px;
 }
 
-/* css of dropdown sidebar */
 .menu  {
-    position:relative;
-    width:auto;
-    text-align: center;
-    margin-left: 20px;
-    margin-bottom: 20px;
-    color:rgba(255, 255, 255, 0.8);
-    cursor: pointer;
+  position:relative;
+  width:auto;
+  text-align: center;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  color:rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+}
+
+  .list{
+    max-height: 0;
+    transition: max-height .3s ease-out;
+    overflow: hidden;
+    margin-left: -120px;
   }
-  
-    .list{
-      max-height: 0;
-      transition: max-height .3s ease-out;
-      overflow: hidden;
-      margin-left: -120px;
+
+ .active {
+      max-height: 300px;
+      transition: max-height 0.3s ease-in;
     }
-  
-   .active {
-        max-height: 300px;
-        transition: max-height 0.3s ease-in;
-      } 
-  
-  .wrapper {
-    margin: 0px auto;
-    width:100%;
-    height: auto;
-  }
 
-  .list li {
-    list-style-type: none;
-  }
+.wrapper {
+  margin: 0px auto;
+  width:100%;
+  height: auto;
+}
 
-  .list a {
-    font-size: 0.85rem;
-    text-decoration: none;
-    color: rgba(255, 255, 255, 0.8);
-  }
+.list li {
+  list-style-type: none;
+}
 
-  #preloader {
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 99999;
-    height: 100%;
-    width: 100%;
-    background: #fff;
-    display: flex;
+.list a {
+  font-size: 0.85rem;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.8);
 }
-.loader{
-    margin: auto;
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-    position: relative;
-}
-.loader:before{
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    background: #000;
-    border-radius: 50%;
-    opacity: 0;
-    animation: popin 1.5s linear infinite 0s;
-}
-.loader:after{
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    background: #000;
-    border-radius: 50%;
-    opacity: 0;
-    animation: popin 1.5s linear infinite 0.5s;
+
+.list li a:hover {
+  color: white;
 }
