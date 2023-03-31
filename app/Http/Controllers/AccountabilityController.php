@@ -32,10 +32,16 @@ class AccountabilityController extends Controller
 
     public function showMrt(){
         $mrt = Mrt::whereNotNull('approved_at')->get();
-        $pending = Mrt::whereNull('approved_at')->get();
         $users = User::whereNotNull('approved_at')->where('role_id', 1)->get();
 
-        return view('warehouse/mrt-request', compact('mrt','users','pending'));
+        return view('warehouse/mrt-list', compact('mrt','users'));
+    }
+
+    public function mrtTicket(){
+        $mrt = Mrt::whereNull('approved_at')->get();
+        $users = User::whereNotNull('approved_at')->where('role_id', 1)->get();
+
+        return view('warehouse/mrt-request', compact('mrt','users'));
     }
 
     public function getItems($id)

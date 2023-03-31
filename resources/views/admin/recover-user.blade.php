@@ -2,7 +2,7 @@
 <!-- UNREGISTERED USER -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h4 class="m-2 font-weight-bold text-primary">Users List to Approve&nbsp;</a></h4>
+        <h4 class="m-2 font-weight-bold text-primary">Deleted Users&nbsp;</a></h4>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -10,8 +10,9 @@
                 <thead>
                     <tr>
                         <th>Name</th>
+                        <th>Department</th>
                         <th>Email</th>
-                        <th>Registered Date</th>
+                        <th>Deleted At</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -19,17 +20,12 @@
                     @foreach ($users as $row)
                     <tr>
                         <td>{{$row->name}}</td>
+                        <td>{{$row->department->name}}</td>
                         <td>{{$row->email}}</td>
-                        <td>{{$row->created_at}}</td>
+                        <td>{{$row->deleted_at}}</td>
                         <td>
-                            <form method="POST" action="{{route('admin.users.destroy', $row->id)}}">
-                                @csrf
-                                @method('DELETE')
-                                <a href="{{ route('admin.users.approve', $row->id) }}"
-                                    class="btn btn-success btn-sm">Approved</a>
-                                <input onclick="return confirm('Are you sure?')" type="submit"
-                                    class="btn btn-danger btn-sm" value="Delete" />
-                            </form>
+                            <a href="{{ route('admin.deletedUsers.recover', $row->id) }}"
+                            class="btn btn-success btn-sm">Restore</a>
                         </td>
                     </tr>
                     @endforeach
