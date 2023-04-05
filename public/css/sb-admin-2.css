@@ -11850,7 +11850,7 @@ body.sidebar-toggled footer.sticky-footer {
     max-height: 0;
     transition: max-height .3s ease-out;
     overflow: hidden;
-    margin-left: -120px;
+    text-align: left;
   }
 
  .active {
@@ -11877,3 +11877,61 @@ body.sidebar-toggled footer.sticky-footer {
 .list li a:hover {
   color: white;
 }
+
+
+/* topdown employee navbar css */
+.custom-dropdown {
+  display: inline-block;
+  position: relative;
+  border: none;
+}
+
+.custom-dropdown:hover {
+  border: none;
+}
+
+.custom-dropdown .dropdown-header {
+  cursor: pointer;
+  padding: 5px 10px;
+  font-size: 18px;
+}
+
+.custom-dropdown:focus {
+  outline: none;
+}
+
+.custom-dropdown .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) scaleY(0);
+  transform-origin: top center;
+  z-index: 999;
+  border: none;
+}
+
+.custom-dropdown .dropdown-menu.show {
+  display: block;
+  animation: expand 0.1s ease-in-out forwards;
+}
+
+.custom-dropdown:hover .dropdown-header {
+  color: #000; /* change the color to your preferred color */
+}
+
+.custom-dropdown.show .dropdown-header {
+  color: #000; /* change the color to your preferred color */
+}
+
+@keyframes expand {
+  from {
+    transform: translateX(-50%) scaleY(0);
+  }
+  to {
+    transform: translateX(-50%) scaleY(1);
+  }
+}
+
+
+

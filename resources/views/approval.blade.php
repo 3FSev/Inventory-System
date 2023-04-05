@@ -1,16 +1,21 @@
-@include('theme.topbar')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Waiting for Approval</div>
-
-                <div class="card-body">
-                    Your account is waiting for our administrator approval.
-                    <br />
-                    Please check back later.
+@include('theme/login-theme')
+<div class="portal">
+    <div class="portal__wrapper">
+        <form action="#" class="portal__wrapper__form">
+            <div class="portal__wrapper__form__wrapper">
+                <div class="portal__wrapper__form__wrapper__title">
+                    <h1>Waiting for Approval</h1><br>
+					<p>Your account is waiting for our administrator approval.
+						Please check back later.</p>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 </div>
+<footer class="back-to">
+  <p id="terms">Back to <a href="{{ route('logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log in</a>.</p>
+</footer>  
+
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+        </form

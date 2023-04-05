@@ -1,5 +1,5 @@
 @include('theme.head')
-@include('theme.topbar')
+@include('theme.employee-topbar')
 
 <body>
     <!-- main content area start -->

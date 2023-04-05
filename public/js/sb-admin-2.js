@@ -120,6 +120,28 @@
         });
     });
 
+
+    // topbar dropdown employee
+    
+    $(document).ready(function() {
+        $(".custom-dropdown").each(function() {
+          var dropdownMenu = $(this).find(".dropdown-menu");
+          var dropdownHeader = $(this).find(".dropdown-header");
+      
+          dropdownHeader.on("click", function() {
+            $(".dropdown-menu.show").not(dropdownMenu).removeClass("show");
+            dropdownMenu.toggleClass("show");
+          });
+        });
+      
+        $(document).on("click", function(e) {
+          if ($(e.target).closest(".custom-dropdown").length === 0) {
+            $(".dropdown-menu.show").removeClass("show");
+          }
+        });
+      });
+
+
 })(jQuery); // End of use strict
 
 const navLinks = document.querySelectorAll('.with-sub');
@@ -148,3 +170,4 @@ document.addEventListener('click', (e) => {
     closeDropdowns();
   }
 });
+

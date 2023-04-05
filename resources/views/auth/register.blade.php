@@ -51,7 +51,7 @@
                             <div class="portal__wrapper__form__wrapper__field__button">
                                 <button type="submit">{{ __('Register') }}</button>
                             </div>
-                            <p id="terms">Already have an account? <a href="{{ route('login') }}">{{ __('Sign In') }}</a>.</p>
+                            <p id="terms">Already have an account? <a href="{{ route('login') }}">{{ __('Login') }}</a>.</p>
                     </div>
                 </form>
             </div>
