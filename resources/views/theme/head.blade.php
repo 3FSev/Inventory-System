@@ -33,7 +33,7 @@
   <meta name="author" content="">
 
   <title>Ormeco Accountability System</title>
-  <link rel="icon" href="https://www.freeiconspng.com/uploads/sales-icon-7.png">
+  <link rel="icon" href="">
 
   <!-- Custom fonts for this template-->
   <link href="../vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
@@ -48,7 +48,5 @@
   <!-- Custom styles for sidebar dropdown -->
   <link rel="stylesheet" href="css/sb-admin-2.css">
   <script src="js/sb-admin-2.js" defer></script>
-
-  <link rel="stylesheet" href="css/font-awesome.min.css">
 
 </head>

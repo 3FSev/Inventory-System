@@ -83,7 +83,7 @@
             </div>
         </div>
     </div>
-    <div></div>
+    <br>
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="table-responsive">
@@ -94,7 +94,6 @@
                             <th>Emplpoyee Name</th>
                             <th>Email</th>
                             <th>Department</th>
-                            <th>Quantity Assigned</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -111,9 +110,6 @@
                             </td>
                             <td>
                                 {{$wiv->users->department->name}}
-                            </td>
-                            <td>
-                                
                             </td>
                         </tr>
                         @endforeach

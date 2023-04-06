@@ -143,7 +143,7 @@
                                                             </td>
                                                             <td>
                                                                 <a href="{{ route('wiv.approve', $pending->id) }}"
-                                                                    class="btn btn-success btn-sm">Approved</a>
+                                                                    class="btn btn-success btn-sm">Accept</a>
                                                             </td>
                                                         </tr>
                                                         @endforeach

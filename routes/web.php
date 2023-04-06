@@ -70,7 +70,7 @@ Route::middleware(['auth','warehouse-user'])->group(function(){
 Route::middleware(['auth','employee-user','approved'])->group(function(){
     Route::get('accountability', [AccountabilityController::class, 'show'])->name('accountability.show');
     Route::get('accountability/{wiv_id}/approve', [AccountabilityController::class, 'approve'])->name('wiv.approve');
-    Route::get('mrt', [AccountabilityController::class, 'showMrt'])->name('accountability.showMrt');
+    Route::get('mrt', [ReturnedItemCotroller::class, 'showMrt'])->name('accountability.showMrt');
     Route::post('mrt', [AccountabilityController::class, 'storeMrt'])->name('mrt.store');
 });
 

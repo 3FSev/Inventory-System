@@ -85,7 +85,7 @@ class IssuanceController extends Controller
                 $item->save();
             }
 
-            return redirect()->back();
+            return redirect()->back()->with('success','Issued item successfully');
         }
 
         return redirect()->back()->with('error', 'The WIV number is already in use.');

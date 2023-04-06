@@ -120,6 +120,37 @@
         });
     });
 
+    $(document).ready(function() {
+        $("#export-btn").click(function() {
+            console.log("button clicked");
+            var table = $("#wivTable");
+            if (table && table.length) {
+              var downloadLink;
+              var dataType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+              var tableSelect = table.clone();
+              var tableHTML = tableSelect[0].outerHTML.replace(/ /g, '%20');
+              // Specify file name
+              var filename = 'wiv_export_' + Date.now() + '.xlsx';
+              // Create download link element
+              downloadLink = document.createElement("a");
+              document.body.appendChild(downloadLink);
+              if (navigator.msSaveOrOpenBlob) {
+                var blob = new Blob([tableHTML], {
+                  type: dataType
+                });
+                navigator.msSaveOrOpenBlob(blob, filename);
+              } else {
+                // Create a link to the file
+                downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+                // Setting the file name
+                downloadLink.download = filename;
+                //triggering the function
+                downloadLink.click();
+              }
+            }
+          });          
+    });
+
 })(jQuery); // End of use strict
 
 const navLinks = document.querySelectorAll('.with-sub');

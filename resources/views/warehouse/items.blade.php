@@ -68,7 +68,7 @@
                             name="quantity" required>
                     </div>
                     <div class="form-group">
-                        <input class="form-control" placeholder="Unit" name="unit" required>
+                        <input class="form-control" placeholder="Unit Type" name="unit" required>
                     </div>
                     <div class="form-group">
                         {!! Form::select('category_id', $category, null, ['class' => 'form-control']) !!}
