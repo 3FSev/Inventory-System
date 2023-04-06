@@ -7,7 +7,7 @@
             @csrf
                 <div class="portal__wrapper__form__wrapper">
                     <div class="logo-row">
-						<img src="assets/50-logo.png" class="logo">
+						<img src="assets/ormeco-logo.png" class="logo">
 					</div>
                     <div class="portal__wrapper__form__wrapper__title">
                         <h1><span>ORMECO </span>Warehouse</h1>
@@ -23,9 +23,6 @@
                                 <input type="password" id="password" class="js-input js-pass form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                                 <label for="password">{{ __('Password') }}</label>
                                 <img id="show-hide-pass" src="assets/showPass.svg" alt="">
-                                    @if (Route::has('password.request'))
-                                        <a id="forgot-pass" href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a>
-                                    @endif
                             </div>
                         <div class="portal__wrapper__form__wrapper__field__button">
                             <button type="submit">{{ __('Login') }}</button>
