@@ -49,6 +49,7 @@
   <!-- Custom styles for sidebar dropdown -->
   <link rel="stylesheet" href="css/sb-admin-2.css">
   <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/app.css">
   <script src="js/sb-admin-2.js" defer></script>
 
 </head>
