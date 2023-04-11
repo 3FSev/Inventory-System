@@ -19,8 +19,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('test', [IssuanceController::class, 'test'])->name('issuance.test');
-
 //----Waiting Page----//
 Route::middleware(['auth','ver'])->group(function(){
     Route::get('approval', function() {
@@ -70,8 +68,9 @@ Route::middleware(['auth','warehouse-user'])->group(function(){
 Route::middleware(['auth','employee-user','approved'])->group(function(){
     Route::get('accountability', [AccountabilityController::class, 'show'])->name('accountability.show');
     Route::get('accountability/{wiv_id}/approve', [AccountabilityController::class, 'approve'])->name('wiv.approve');
-    Route::get('mrt', [ReturnedItemCotroller::class, 'showMrt'])->name('accountability.showMrt');
-    Route::post('mrt', [AccountabilityController::class, 'storeMrt'])->name('mrt.store');
+    Route::get('mrt-list', [ReturnedItemCotroller::class, 'showList'])->name('accountability.showList');
+    Route::get('request-mrt', [ReturnedItemCotroller::class, 'requestMrt'])->name('accountability.requestMrt');
+    Route::post('request-mrt', [ReturnedItemCotroller::class, 'storeMrt'])->name('request-mrt.store');
 });
 
 Auth::routes();

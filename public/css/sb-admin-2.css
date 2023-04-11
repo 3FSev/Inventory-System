@@ -5306,7 +5306,7 @@ input[type="button"].btn-block {
 .badge {
   display: inline-block;
   padding: 0.25em 0.4em;
-  font-size: 75%;
+  font-size: 10%;
   font-weight: 700;
   line-height: 1;
   text-align: center;
@@ -11850,7 +11850,7 @@ body.sidebar-toggled footer.sticky-footer {
     max-height: 0;
     transition: max-height .3s ease-out;
     overflow: hidden;
-    margin-left: -120px;
+    text-align: left;
   }
 
  .active {
@@ -11877,3 +11877,109 @@ body.sidebar-toggled footer.sticky-footer {
 .list li a:hover {
   color: white;
 }
+
+
+/* topdown employee navbar css */
+.custom-dropdown {
+  display: inline-block;
+  position: relative;
+  border: none;
+}
+
+.custom-dropdown:hover {
+  border: none;
+}
+
+.custom-dropdown .dropdown-header {
+  cursor: pointer;
+  padding: 5px 10px;
+  font-size: 18px;
+}
+
+.custom-dropdown:focus {
+  outline: none;
+}
+
+.custom-dropdown .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) scaleY(0);
+  transform-origin: top center;
+  z-index: 999;
+  border: none;
+}
+
+.custom-dropdown .dropdown-menu.show {
+  display: block;
+  animation: expand 0.1s ease-in-out forwards;
+}
+
+.custom-dropdown:hover .dropdown-header {
+  color: #000; /* change the color to your preferred color */
+}
+
+.custom-dropdown.show .dropdown-header {
+  color: #000; /* change the color to your preferred color */
+}
+
+.dropdown-item a{
+  text-decoration: none;
+  color: green;
+}
+
+@keyframes expand {
+  from {
+    transform: translateX(-50%) scaleY(0);
+  }
+  to {
+    transform: translateX(-50%) scaleY(1);
+  }
+}
+
+.custom-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-header {
+  position: relative;
+}
+
+.dropdown-header .fa-bell {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.dropdown-header .badge-notification {
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  font-size: 0.8rem;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 1;
+  display: none;
+  min-width: 10rem;
+  padding: 0.5rem 0;
+  margin: 0.125rem 0 0;
+  font-size: 1rem;
+  color: #333;
+  text-align: left;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.25rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.175);
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+

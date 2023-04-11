@@ -65,7 +65,6 @@
 </div>
 <!-- main content area end -->
 @include('theme.footer')
-</body>
 <!-- Issuance Modal-->
 <div class="modal fade" id="aModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

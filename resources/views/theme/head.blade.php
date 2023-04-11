@@ -38,6 +38,7 @@
   <!-- Custom fonts for this template-->
   <link href="../vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/f1f65d2bf3.js" crossorigin="anonymous"></script>
 
   <!-- Custom styles for this template-->
   <link href="../css/sb-admin-2.css" rel="stylesheet">
@@ -47,6 +48,7 @@
 
   <!-- Custom styles for sidebar dropdown -->
   <link rel="stylesheet" href="css/sb-admin-2.css">
+  <link rel="stylesheet" href="css/app.css">
   <script src="js/sb-admin-2.js" defer></script>
 
 </head>

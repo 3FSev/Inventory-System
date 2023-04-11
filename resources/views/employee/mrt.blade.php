@@ -1,5 +1,5 @@
 @include('theme.head')
-@include('theme.topbar')
+@include('theme.employee-topbar')
 <div class="card shadow mb-4">
     <div class="card-body">
         <div class="card-header py-3">
@@ -11,6 +11,7 @@
                 </a>
             </h4>
         </div>
+        <br>
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%"
                 cellspacing="0">
@@ -58,10 +59,7 @@
                             {{ number_format($item->pivot->amount, 2, '.', ',') }}<br>
                             @endforeach
                         </td>
-                        <td>
-                            <a href="{{ route('wiv.approve', $pending->id) }}"
-                                class="btn btn-success btn-sm">Accept</a>
-                        </td>
+                        <td></td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -81,10 +79,8 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="{{route('issuance.store')}}" class="container-fluid" autocomplete="off">
+                <form method="POST" action="{{route('request-mrt.store')}}" class="container-fluid" autocomplete="off">
                     @csrf
-                    <div class="form-group">
-                    </div>
                     <div class="table-responsive">
                         <table class="table" id="items-table">
                             <thead>
@@ -98,7 +94,7 @@
                                 <tr class="item-row">
                                     <td>
                                         <select name="item[]" class="form-control">
-                                            @foreach ($wiv->items as $item)
+                                            @foreach ($items as $item)
                                             <option value="{{ $item->id }}">{{ $item->name }}</option>
                                             @endforeach
                                         </select>

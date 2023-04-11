@@ -3,11 +3,11 @@
 <body>
     <div class="portal">
         <div class="portal__wrapper">
-            <form method="POST" action="{{ route('register') }}" class="portal__wrapper__form">
+            <form method="POST" action="" class="portal__wrapper__form">
                 @csrf
                     <div class="portal__wrapper__form__wrapper">
                         <div class="logo-row">
-                            <img src="assets/50-logo.png" class="logo">
+                            <img src="assets/ormeco-logo.png" class="logo">
                         </div>
                         <div class="portal__wrapper__form__wrapper__title">
                             <h1><span>ORMECO </span>Warehouse</h1>
@@ -51,7 +51,7 @@
                             <div class="portal__wrapper__form__wrapper__field__button">
                                 <button type="submit">{{ __('Register') }}</button>
                             </div>
-                            <p id="terms">Already have an account? <a href="{{ route('login') }}">{{ __('Sign In') }}</a>.</p>
+                            <p id="terms">Already have an account? <a href="{{ route('login') }}">{{ __('Login') }}</a>.</p>
                     </div>
                 </form>
             </div>
