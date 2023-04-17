@@ -109,11 +109,17 @@ class AccountabilityController extends Controller
 
             // Deduct the quantity in item_wiv
             $itemMrtQuantityRemaining = $itemMrtQuantity;
+            $itemMrtQuantityRemaining = $itemMrtQuantity;
             foreach($wivs as $wiv){
                 foreach($wiv->items as $wivItem){
                     if ($wivItem->mrt->contains('id', $mrtId)) {
                         $quantityToDeduct = min($wivItem->pivot->quantity, $itemMrtQuantityRemaining);
-                        $wivItem->pivot->update(['quantity' => $wivItem->pivot->quantity - $quantityToDeduct]);
+                        $newQuantity = $wivItem->pivot->quantity - $quantityToDeduct;
+                        $newAmount = $wivItem->price * $newQuantity;
+                        $wivItem->pivot->update([
+                            'quantity' => $newQuantity,
+                            'amount' => $newAmount
+                        ]);
                         $itemMrtQuantityRemaining -= $quantityToDeduct;
 
                         if ($itemMrtQuantityRemaining <= 0) {
@@ -122,6 +128,7 @@ class AccountabilityController extends Controller
                     }
                 }
             }
+
         }
         return redirect()->route('returned.show')->with('success','Materials returned succesfully');
 

@@ -63,7 +63,7 @@ Route::middleware(['auth','warehouse-user'])->group(function(){
     Route::post('returned', [AccountabilityController::class, 'storeMrt'])->name('returned.store');
     Route::get('mrtForm/{id}', [AccountabilityController::class, 'mrtForm'])->name('returned.mrtForm');
     Route::post('mrtForm/{id}', [AccountabilityController::class, 'confirmMrt']);
-    Route::get('article-export',[ArticleController::class, 'exportArticles'])->name('export.excel'); 
+    Route::get('wiv-edit/{id}', [IssuanceController::class, 'wivEdit'])->name('wiv.edit');
 });
 
 //----Employee Module----//

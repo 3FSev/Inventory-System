@@ -20,7 +20,7 @@
                             <label for="email">{{ __('Email Address') }}</label>
                         </div>
                             <div class="portal__wrapper__form__wrapper__field__input">
-                                <input type="password" id="password" class="js-input js-pass form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                <input type="password" id="password" class="js-input js-pass form-control @error('  ') is-invalid @enderror" name="password" required autocomplete="current-password">
                                 <label for="password">{{ __('Password') }}</label>
                                 <img id="show-hide-pass" src="assets/showPass.svg" alt="">
                             </div>

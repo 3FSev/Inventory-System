@@ -97,4 +97,11 @@ class IssuanceController extends Controller
         $wiv->items()->detach($request->role_id);
         return redirect()->back()->with('success', 'Role removed successfully');
     }
+
+    public function wivEdit($id)
+    {
+        $wiv = Wiv::findOrFail($id);
+
+        return view('warehouse/wiv_edit', compact('wiv'));
+    }
 }
