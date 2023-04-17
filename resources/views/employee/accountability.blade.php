@@ -26,31 +26,40 @@
                     <tr>
                         <th>{{$wiv->id}}</th>
                         <th>{{$wiv->wiv_date}}</th>
-                        <th>
-                            @foreach ($wiv->items as $item)
-                            - {{$item->name}}<br>
-                            @endforeach
-                        </th>
-                        <th>
+                        <td>
+                            <ul>
+                                @foreach ($pending->items as $item)
+                                    <li>{{$item->name}}</li>
+                                @endforeach
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                @foreach ($pending->items as $item)
+                                    <li>{{$item->description}}</li>
+                                @endforeach
+                            </ul>
+                        </td>
+                        <td>
                             @foreach($wiv->items as $item)
                             {{($item->category->name)}}<br>
                             @endforeach
-                        </th>
-                        <th>
+                        </td>
+                        <td>
                             @foreach($wiv->items as $item)
                             {{($item->pivot->quantity)}}<br>
                             @endforeach
-                        </th>
-                        <th>
+                        </td>
+                        <td>
                             @foreach($wiv->items as $item)
-                            {{($item->price)}}<br>
+                            {{ number_format($item->pivot->price, 2, '.', ',') }}<br>
                             @endforeach
-                        </th>
-                        <th>
+                        </td>
+                        <td>
                             @foreach($wiv->items as $item)
                             {{ number_format($item->pivot->amount, 2, '.', ',') }}<br>
                             @endforeach
-                        </th>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>

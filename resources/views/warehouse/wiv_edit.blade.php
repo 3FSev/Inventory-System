@@ -50,7 +50,7 @@
                             {{ number_format($item->pivot->amount, 2, '.', ',') }}
                         </td>
                         <td>
-                            <form method="POST" action="">
+                            <form method="POST" action="{{ route('wiv.item.delete', ['wiv' => $wiv->id, 'item' => $item->id]) }}">
                                 @csrf
                                 @method('DELETE')
                                 <input onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger btn-sm" value="Delete" />
