@@ -100,11 +100,10 @@
                         <div class="col-sm-8">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <input type="number" name="riv" class="form-control" placeholder="Number" required>
+                                    <input type="number" name="riv" class="form-control" placeholder="Number">
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control datepicker" name="rivDate" placeholder="Date"
-                                        required>
+                                    <input type="text" class="form-control datepicker" name="rivDate" placeholder="Date">
                                 </div>
                             </div>
                         </div>
@@ -114,12 +113,10 @@
                         <div class="col-sm-8">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <input type="number" name="po" class="form-control" placeholder="Number" required
-                                        required>
+                                    <input type="number" name="po" class="form-control" placeholder="Number">
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control datepicker" name="poDate" placeholder="Date"
-                                        required>
+                                    <input type="text" class="form-control datepicker" name="poDate" placeholder="Date">
                                 </div>
                             </div>
                         </div>
@@ -129,11 +126,10 @@
                         <div class="col-sm-8">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <input type="number" name="rr" class="form-control" placeholder="Number" required>
+                                    <input type="number" name="rr" class="form-control" placeholder="Number">
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control datepicker" name="rrDate" placeholder="Date"
-                                        required>
+                                    <input type="text" class="form-control datepicker" name="rrDate" placeholder="Date">
                                 </div>
                             </div>
                         </div>
