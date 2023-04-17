@@ -16,7 +16,7 @@
 
                         <div class="portal__wrapper__form__wrapper__field">
                             <div class="portal__wrapper__form__wrapper__field__input">
-                                <input type="text" id="name" class="js-input form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input type="text" id="name" class="js-input form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name">
                                 <label for="name">{{ __('Name') }}</label>
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">

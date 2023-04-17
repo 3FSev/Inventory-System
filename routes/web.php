@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\AccountabilityController;
-use App\Http\Controllers\IssuanceController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ItemsController;
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\IssuanceController;
 use App\Http\Controllers\RecoveryController;
 use App\Http\Controllers\ReturnedItemCotroller;
-use App\Http\Controllers\UserController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AccountabilityController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,15 +63,19 @@ Route::middleware(['auth','warehouse-user'])->group(function(){
     Route::post('returned', [AccountabilityController::class, 'storeMrt'])->name('returned.store');
     Route::get('mrtForm/{id}', [AccountabilityController::class, 'mrtForm'])->name('returned.mrtForm');
     Route::post('mrtForm/{id}', [AccountabilityController::class, 'confirmMrt']);
+    Route::get('article-export',[ArticleController::class, 'exportArticles'])->name('export.excel'); 
 });
 
 //----Employee Module----//
 Route::middleware(['auth','employee-user','approved'])->group(function(){
     Route::get('accountability', [AccountabilityController::class, 'show'])->name('accountability.show');
-    Route::get('accountability/{wiv_id}/approve', [AccountabilityController::class, 'approve'])->name('wiv.approve');
+    Route::get('pending-wiv', [AccountabilityController::class, 'pending'])->name('pending.accountability.show');
+    Route::get('pending-wiv/{wiv_id}/approve', [AccountabilityController::class, 'approve'])->name('wiv.approve');
     Route::get('mrt-list', [ReturnedItemCotroller::class, 'showList'])->name('accountability.showList');
     Route::get('request-mrt', [ReturnedItemCotroller::class, 'requestMrt'])->name('accountability.requestMrt');
     Route::post('request-mrt', [ReturnedItemCotroller::class, 'storeMrt'])->name('request-mrt.store');
+    Route::get('change-password', [UserController::class, 'changePassword']);
+    Route::post('change-password', [UserController::class, 'updatePassword'])->name('update.password');
 });
 
 Auth::routes();

@@ -15,12 +15,18 @@ class AccountabilityController extends Controller
 {
     public function show(){
         $user_id = Auth::id();
-        $pending = Wiv::whereNull('received_at')->where('user_id',$user_id)->get();
         $wiv = Wiv::with(['items' => function($query){
             $query->wherePivot('quantity','>=',1);
         }])->whereNotNull('received_at')->where('user_id',$user_id)->get();
 
-        return view('employee/accountability', compact('pending','wiv'));
+        return view('employee/accountability', compact('wiv'));
+    }
+
+    public function pending(){
+        $user_id = Auth::id();
+        $pending = Wiv::whereNull('received_at')->where('user_id',$user_id)->get();
+
+        return view('employee/pending-accountability', compact('pending'));
     }
 
     public function approve($wiv_id)

@@ -14,13 +14,14 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>MRT Number</th>
-                        <th>Date</th>
+                        <th>Employee Name</th>
+                        <th>Department</th>
                         <th>Item Name</th>
                         <th>Category</th>
                         <th>Quantity</th>
                         <th>Unit Cost</th>
                         <th>Amount</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -39,12 +40,12 @@
                         </td>
                         <td>
                             @foreach($mrt->items as $item)
-                            {{($item->pivot->quantity)}}<br>
+                                {{$item->category->name}}
                             @endforeach
                         </td>
                         <td>
                             @foreach($mrt->items as $item)
-                            {{($item->unit)}}<br>
+                            {{($item->pivot->quantity)}} {{($item->unit)}}<br>
                             @endforeach
                         </td>
                         <td>
@@ -57,13 +58,16 @@
                             {{ number_format($item->pivot->amount, 2, '.', ',') }}<br>
                             @endforeach
                         </td>
+                        <td>
+                            <a href="{{ route('returned.mrtForm', $mrt->id) }}"
+                                class="btn btn-info btn-sm">Review</a>
+                        </td>
                     </tr>
                     @endforeach
             </table>
         </div>
     </div>
 </div>
-<!-- main content area end -->
 @include('theme.footer')
 <!-- Issuance Modal-->
 <div class="modal fade" id="aModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

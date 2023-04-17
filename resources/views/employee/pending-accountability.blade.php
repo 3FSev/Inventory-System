@@ -3,7 +3,7 @@
 <div class="card shadow mb-4">
     <div class="card-body">
         <div class="card-header py-3">
-            <h4 class="m-2 font-weight-bold text-primary">Returned Item/s &nbsp;
+            <h4 class="m-2 font-weight-bold text-primary">Pending wiv
             </h4>
         </div>
         <br>
@@ -12,46 +12,51 @@
                 cellspacing="0">
                 <thead>
                     <tr>
-                        <th>MRT Number</th>
+                        <th>WIV Number</th>
                         <th>Date</th>
                         <th>Item Name</th>
                         <th>Category</th>
                         <th>Quantity</th>
                         <th>Unit Cost</th>
                         <th>Amount</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($mrt as $mrt)
+                    @foreach ($pending as $pending)
                     <tr>
-                        <td>{{$mrt->id}}</td>
-                        <td>{{$mrt->mrt_date}}</td>
+                        <td>{{$pending->id}}</td>
+                        <td>{{$pending->wiv_date}}</td>
                         <td>
                             <ul>
-                                @foreach ($mrt->items as $item)
+                                @foreach ($pending->items as $item)
                                     <li>{{$item->name}}</li>
                                 @endforeach
                             </ul>
                         </td>
                         <td>
-                            @foreach($mrt->items as $item)
+                            @foreach($pending->items as $item)
                             {{($item->category->name)}}<br>
                             @endforeach
                         </td>
                         <td>
-                            @foreach($mrt->items as $item)
+                            @foreach($pending->items as $item)
                             {{($item->pivot->quantity)}}<br>
                             @endforeach
                         </td>
                         <td>
-                            @foreach($mrt->items as $item)
-                            {{($item->price)}}<br>
+                            @foreach($pending->items as $item)
+                            {{ number_format($item->price, 2, '.', ',') }}<br>
                             @endforeach
                         </td>
                         <td>
-                            @foreach($mrt->items as $item)
+                            @foreach($pending->items as $item)
                             {{ number_format($item->pivot->amount, 2, '.', ',') }}<br>
                             @endforeach
+                        </td>
+                        <td>
+                            <a href="{{ route('wiv.approve', $pending->id) }}"
+                                class="btn btn-success btn-sm">Accept</a>
                         </td>
                     </tr>
                     @endforeach

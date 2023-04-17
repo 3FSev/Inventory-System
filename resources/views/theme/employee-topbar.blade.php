@@ -13,7 +13,7 @@
             </div>
             <div class="dropdown-menu">
                 <div class="dropdown-item"><a href="accountability">List</a></div>
-                <div class="dropdown-item">Pending</div>
+                <a href="pending-wiv"><div class="dropdown-item">Pending</div></a>
             </div>
         </div>
 
@@ -31,7 +31,7 @@
             <!-- Topbar Navbar -->
             <ul class="navbar-nav ml-auto">
 
-                <!-- Notification Dropdown -->
+                <!-- Notification Dropdown
                 <div class="custom-dropdown">
                     <div class="dropdown-header">
                         <i class="fa-regular fa-bell"></i>
@@ -41,7 +41,7 @@
                         <div class="dropdown-item" data-value="Option 1">List</div>
                         <div class="dropdown-item" data-value="Option 2">Request</div>
                     </div>
-                </div>
+                </div> -->
 
 
                 <div class="topbar-divider d-none d-sm-block"></div>
@@ -56,9 +56,9 @@
                     <!-- Dropdown - User Information -->
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                         aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="#">
-                            <i class=" fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Settings
+                        <a class="dropdown-item" href="change-password">
+                            <i class=" fas fa-pencil fa-sm fa-fw mr-2 text-gray-400"></i>
+                            Change Password
                         </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ route('logout') }}"

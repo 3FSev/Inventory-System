@@ -6,7 +6,7 @@
             <h4 class="m-2 font-weight-bold text-primary">Equipment's Detail</h4>
         </div>
         <a href="../items" type="button" class="btn btn-primary bg-gradient-primary btn-block"> <i
-                class="fas fa-flip-horizontal fa-fw fa-share"></i> Back</a>
+        class="fas fa-flip-horizontal fa-fw fa-share"></i> Back</a>
         <div class="card-body">
             <!--Insert Data here-->
             <div class="form-group row text-left">

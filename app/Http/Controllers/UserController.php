@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Department;
 use App\Models\Role;
 use App\Models\User;
+use App\Models\Department;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -78,5 +80,19 @@ class UserController extends Controller
         $user->save();
 
         return redirect('../ver')->with('info','User information updated');
+    }
+
+    public function changePassword()
+    {
+        return view('theme/change-password');
+    }
+
+    public function updatePassword(Request $request)
+    {
+        Auth::user()->update([
+            'password' => Hash::make($request->input('new_password')),
+        ]);
+
+        return redirect()->route('accountability.show')->with('success', 'Password changed successfully.');
     }
 }

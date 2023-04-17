@@ -40,6 +40,8 @@
                 <input type="hidden" name="mrt_id" value="{{ $mrt->id }}">
             </div>
             <br><h5>MATERIALS RETURNED TICKET</h5><br>
+            RETURNED BY: {{$mrt->users->name}}<br>
+            DEPT/SECTION: {{$mrt->users->department->name}}
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
@@ -77,9 +79,8 @@
                 </tbody>
             </table>
             <div>
-                RETURNED BY: {{$mrt->users->name}}
-                <button type="submit" class="btn btn-success" style="float:right;"><i class="fa fa-check fa-fw"></i>Confirm</button><br>
-                DEPT/SECTION: {{$mrt->users->department->name}}
+                <button type="submit" class="btn btn-success" style="float:right; margin-left: 5px;"><i class="fa fa-check fa-fw"></i>Confirm</button>
+                <a href="../mrt-ticket" style="float:right;" type="button" class="btn btn-primary"><i class="fas fa-flip-horizontal fa-fw fa-share"></i> Back</a>
             </div>
         </form>
         </div>

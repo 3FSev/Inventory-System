@@ -16,7 +16,7 @@
                     <div class="portal__wrapper__form__wrapper__field">
 
                         <div class="portal__wrapper__form__wrapper__field__input">
-                            <input type="email" id="email" class="js-input form-control @error('email') is-invalid @enderror" name="email" required autocomplete="email" autofocus>
+                            <input type="email" id="email" class="js-input form-control @error('email') is-invalid @enderror" name="email" required autocomplete="email">
                             <label for="email">{{ __('Email Address') }}</label>
                         </div>
                             <div class="portal__wrapper__form__wrapper__field__input">
