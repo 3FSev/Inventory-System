@@ -19,6 +19,17 @@
                 <h5>ORIENTAL MINDORO ELECTRIC COOPERATIVE, INC</h5>
                 <h5>(O R M E C O)</h5>
                 <h6>Simaron, Calapan City</h6><br>
+                <p><b>MEMORANDUM RECEIPT FOR ACCOUNTABILITIES ( EQUIPMENT, TOOLS, DEVICES AND OTHER
+                    <br> OFFICE MATERIALS WITH SEMI-EXPENDABLE AND NON-EXPENDABLE PROPERTIES )</b> <br>	<br>
+
+                          I, {{$user->name}}, do hereby acknowledged to have personally received from JAIME B. GARONG, JR. the Warehouse
+                    Supervisor, the following office property for which I shall be fully responsible in accordance to the Warehousing, Accounting and
+                    Auditing Procedures and regulation of ORMECO and it shall be used only for my official functions and duties in the above
+                    mentioned electric cooperative. <br><br>
+
+                          This is in compliance with the Energy Regulatory Commission ( ERC ) in preparation for Accounting Manual Cost
+                    submitted by ORMECO with the cut-off  date, December 31, 2014
+                    </p>
             </div>
             <table class="table table-bordered" id="wivTable" width="100%" cellspacing="0">
                 <thead>
@@ -79,7 +90,10 @@
                 </tbody>
             </table>
             <div class="table-footer">
-                <h6>Conformed :
+                <h6>Conformed : <br>
+                    &emsp;<b>{{$user->name}} </b><br>
+                    &emsp;{{$user->department->name}} <br>
+                    &emsp;Accountable Employee <br>
                 </h6>
             </div>
         </div>

@@ -6274,6 +6274,10 @@ a.close.disabled {
   border-radius: 0.35rem;
 }
 
+.tab4{
+  tab-size: 8;
+}
+
 .popover {
   position: absolute;
   top: 0;
