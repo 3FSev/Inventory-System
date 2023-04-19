@@ -390,6 +390,12 @@ h6, .h6 {
   font-size: 1rem;
 }
 
+.header,
+.header .h5,
+.header .h6 {
+  text-align: center;
+}
+
 .lead {
   font-size: 1.25rem;
   font-weight: 300;
@@ -4919,6 +4925,14 @@ input[type="button"].btn-block {
   padding: 1.25rem;
 }
 
+.option {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  height: auto;
+  flex: 1 1 auto;
+  padding: 1.25rem;
+}
+
 .card-title {
   margin-bottom: 0.75rem;
 }
@@ -7140,38 +7154,77 @@ button.bg-dark:focus {
 }
 
 @media print {
+
+  .table-bordered {
+    border: none;
+    margin: 0;
+  }
+  
+  .table {
+    margin: 0;
+  }
+  
+  .table td,
+  .table th {
+    background-color: #fff !important;
+    font-family: "Arial Narrow", Arial, sans-serif;
+    font-size: 16px;
+  }
+  
   .d-print-none {
     display: none !important;
   }
+  
   .d-print-inline {
     display: inline !important;
   }
+  
   .d-print-inline-block {
     display: inline-block !important;
   }
+  
   .d-print-block {
     display: block !important;
   }
+  
   .d-print-table {
     display: table !important;
   }
+  
   .d-print-table-row {
     display: table-row !important;
   }
+  
   .d-print-table-cell {
     display: table-cell !important;
   }
+  
   .d-print-flex {
     display: -webkit-box !important;
     display: -ms-flexbox !important;
     display: flex !important;
   }
+  
   .d-print-inline-flex {
     display: -webkit-inline-box !important;
     display: -ms-inline-flexbox !important;
     display: inline-flex !important;
   }
-}
+  
+  .option {
+    display: none;
+  }
+  
+  .card {
+    width: auto;
+    margin: 0 auto;
+  }
+  
+  .card-body {
+    width: auto;
+    margin: 0;
+  }
+  }
 
 .embed-responsive {
   position: relative;
@@ -10376,6 +10429,14 @@ a.text-dark:hover, a.text-dark:focus {
     color: inherit;
     border-color: #dddfeb;
   }
+
+  .shadow {
+    box-shadow: none !important;
+  }
+
+  .card {
+    border: none !important;
+  }
 }
 
 html {
@@ -10439,6 +10500,7 @@ a:focus {
 .scroll-to-top i {
   font-weight: 800;
 }
+
 
 @-webkit-keyframes growIn {
   0% {

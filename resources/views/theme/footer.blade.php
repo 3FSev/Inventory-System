@@ -27,6 +27,7 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
 
 <!-- Custom scripts for all pages-->
 <script src="../js/sb-admin-2.js"></script>
@@ -44,3 +45,7 @@
 
 <!-- Page level custom scripts -->
 <script src="../js/demo/datatables-demo.js"></script>
+
+<!-- Page printing custom scripts -->
+<script src="../jquery-1.4.4.min.js" type="text/javascript"></script>
+<script src="../jquery.printPage.js" type="text/javascript"></script>

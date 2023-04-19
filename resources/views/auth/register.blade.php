@@ -33,6 +33,22 @@
                                     </span>
                                 @enderror
                             </div>
+
+                            <div class="portal__wrapper__form__wrapper__field__input">
+                                <select id="gender" class="js-input form-control @error('gender') is-invalid @enderror custom-select" name="gender" value="{{ old('gender') }}" required autocomplete="gender">
+                                  <option value="" disabled selected>Select your gender</option>
+                                  <option value="male">Male</option>
+                                  <option value="female">Female</option>
+                                  <option value="non-binary">Non-binary</option>
+                                </select>
+                                <label for="gender">{{ __('Gender') }}</label>
+                                @error('gender')
+                                  <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                  </span>
+                                @enderror
+                              </div>
+
                             <div class="portal__wrapper__form__wrapper__field__input">
                                 <input type="password" id="password" class="js-input js-pass form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
                                 <label for="password">{{ __('Password') }}</label>

@@ -48,7 +48,12 @@
                             @endforeach
                         </td>
                         <td>
-                            <a href="{{route('wiv.edit', $wiv->id)}}" class="btn btn-warning btn-sm">Edit</a>
+                            <form method="POST" action="{{route('wiv.delete', $wiv->id)}}">
+                                @csrf
+                                @method('DELETE')
+                                <a href="{{route('wiv.edit', $wiv->id)}}" class="btn btn-warning btn-sm">Edit</a>
+                                <input onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger btn-sm" value="Delete" />
+                            </form>
                         </td>
                     </tr>
                     @endforeach

@@ -14,6 +14,14 @@
 </style>
 @include('theme.head')
 @include('theme.topbar')
+<div class="card-body">
+    <div class="table-responsive">
+        <div>
+            <a href="../issuance" style="float:right;" type="button" class="btn btn-primary"><i
+                class="fas fa-flip-horizontal fa-fw fa-share"></i> Back</a>
+        </div>
+    </div>
+</div>
 <div class="card shadow mb-4">
     <div class="card-body">
         <div class="table-responsive">
@@ -24,6 +32,7 @@
                 <thead>
                     <tr>
                         <th>PARTICULARS</th>
+                        <th>DETAILS</th>
                         <th>QTY</th>
                         <th>UNIt</th>
                         <th>UNIT COST</th>
@@ -38,6 +47,9 @@
                             {{$item->name}}
                         </td>
                         <td>
+                            {{$item->description}}
+                        </td>
+                        <td>
                             {{$item->pivot->quantity}}
                         </td>
                         <td>
@@ -50,7 +62,7 @@
                             {{ number_format($item->pivot->amount, 2, '.', ',') }}
                         </td>
                         <td>
-                            <form method="POST" action="{{ route('wiv.item.delete', ['wiv' => $wiv->id, 'item' => $item->id]) }}">
+                            <form method="POST" action="{{ route('wiv.item.delete', ['wiv_id' => $wiv->id, 'item_id' => $item->id]) }}">
                                 @csrf
                                 @method('DELETE')
                                 <input onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger btn-sm" value="Delete" />

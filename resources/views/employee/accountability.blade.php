@@ -23,44 +23,42 @@
                 </thead>
                 <tbody>
                     @foreach ($wiv as $wiv)
-                    <tr>
-                        <th>{{$wiv->id}}</th>
-                        <th>{{$wiv->wiv_date}}</th>
-                        <td>
-                            <ul>
-                                @foreach ($pending->items as $item)
-                                    <li>{{$item->name}}</li>
-                                @endforeach
-                            </ul>
-                        </td>
-                        <td>
-                            <ul>
-                                @foreach ($pending->items as $item)
-                                    <li>{{$item->description}}</li>
-                                @endforeach
-                            </ul>
-                        </td>
-                        <td>
-                            @foreach($wiv->items as $item)
-                            {{($item->category->name)}}<br>
-                            @endforeach
-                        </td>
-                        <td>
-                            @foreach($wiv->items as $item)
-                            {{($item->pivot->quantity)}}<br>
-                            @endforeach
-                        </td>
-                        <td>
-                            @foreach($wiv->items as $item)
-                            {{ number_format($item->pivot->price, 2, '.', ',') }}<br>
-                            @endforeach
-                        </td>
-                        <td>
-                            @foreach($wiv->items as $item)
-                            {{ number_format($item->pivot->amount, 2, '.', ',') }}<br>
-                            @endforeach
-                        </td>
-                    </tr>
+                        @foreach ($wiv->items as $item)
+                            <tr>
+                                <th>{{$wiv->id}}</th>
+                                <th>{{$wiv->wiv_date}}</th>
+                                <td>
+                                    {{$item->name}}
+                                </td>
+                                <td>
+                                    <ul>
+                                        @foreach ($pending->items as $item)
+                                            <li>{{$item->description}}</li>
+                                        @endforeach
+                                    </ul>
+                                </td>
+                                <td>
+                                    @foreach($wiv->items as $item)
+                                    {{($item->category->name)}}<br>
+                                    @endforeach
+                                </td>
+                                <td>
+                                    @foreach($wiv->items as $item)
+                                    {{($item->pivot->quantity)}}<br>
+                                    @endforeach
+                                </td>
+                                <td>
+                                    @foreach($wiv->items as $item)
+                                    {{ number_format($item->pivot->price, 2, '.', ',') }}<br>
+                                    @endforeach
+                                </td>
+                                <td>
+                                    @foreach($wiv->items as $item)
+                                    {{ number_format($item->pivot->amount, 2, '.', ',') }}<br>
+                                    @endforeach
+                                </td>
+                            </tr>
+                        @endforeach
                     @endforeach
                 </tbody>
             </table>

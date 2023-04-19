@@ -104,4 +104,21 @@ class IssuanceController extends Controller
 
         return view('warehouse/wiv_edit', compact('wiv'));
     }
+
+    public function wivItemDelete($wiv_id, $item_id)
+    {
+        $wiv = Wiv::findOrFail($wiv_id);
+        $wiv->items()->detach($item_id);
+
+        return redirect()->back()->with('success', 'Item deleted successfully.');
+    }
+
+    public function wivDelete($id)
+    {
+        $wiv = Wiv::findOrFail($id);
+        $wiv->items()->detach();
+        $wiv->delete();
+
+        return redirect()->back()->with('success', 'WIV deleted successfully.');
+    }
 }

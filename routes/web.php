@@ -64,6 +64,8 @@ Route::middleware(['auth','warehouse-user'])->group(function(){
     Route::get('mrtForm/{id}', [AccountabilityController::class, 'mrtForm'])->name('returned.mrtForm');
     Route::post('mrtForm/{id}', [AccountabilityController::class, 'confirmMrt']);
     Route::get('wiv-edit/{id}', [IssuanceController::class, 'wivEdit'])->name('wiv.edit');
+    Route::delete('wiv-edit/{wiv_id}/item/{item_id}', [IssuanceController::class, 'wivItemDelete'])->name('wiv.item.delete');
+    Route::delete('issuance/{id}', [IssuanceController::class, 'wivDelete'])->name('wiv.delete');
 });
 
 //----Employee Module----//
