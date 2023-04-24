@@ -7,7 +7,6 @@
         </div>
         <a href="../ver" type="button" class="btn btn-primary bg-gradient-primary">Back</a>
         <div class="card-body">
-
             <form role="form" method="POST" action="{{$user->id}}">
                 @csrf
                 <input type="hidden" name="id" value="" />
@@ -62,7 +61,7 @@
                         Password:
                     </div>
                     <div class="col-sm-9">
-                        <input class="form-control" name="password" value="{{ old('password', '') }}">
+                        <input type="password" class="form-control" name="password" value="{{ old('password', '') }}">
                     </div>
                 </div>
                 <hr>
