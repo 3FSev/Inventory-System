@@ -45,7 +45,3 @@
 
 <!-- Page level custom scripts -->
 <script src="../js/demo/datatables-demo.js"></script>
-
-<!-- Page printing custom scripts -->
-<script src="../jquery-1.4.4.min.js" type="text/javascript"></script>
-<script src="../jquery.printPage.js" type="text/javascript"></script>

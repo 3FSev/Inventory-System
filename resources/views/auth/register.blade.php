@@ -22,8 +22,8 @@
                                 value="{{ old('name') }}" required autocomplete="name">
                             <label for="name">{{ __('Name') }}</label>
                             @error('name')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
+                            <span class="error-message" role="alert">
+                                {{ $message }}
                             </span>
                             @enderror
                         </div>
@@ -33,8 +33,8 @@
                                 value="{{ old('email') }}" required autocomplete="email">
                             <label for="email">{{ __('Email Address') }}</label>
                             @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
+                            <span class="error-message" role="alert">
+                               {{ $message }}
                             </span>
                             @enderror
                         </div>

@@ -99,6 +99,6 @@ class UserController extends Controller
             'password' => Hash::make($request->input('new_password')),
         ]);
 
-        return redirect()->route('accountability.show')->with('success', 'Password changed successfully.');
+        return redirect()->back()->with('success', 'Password changed successfully.');
     }
 }

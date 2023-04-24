@@ -80,8 +80,6 @@
                 success: function (data) {
                     var items_dropdown = $('select[name="item[]"]');
 
-                    console.log('User selected:', items_dropdown);
-
                     // Remove existing options
                     items_dropdown.empty();
 
@@ -106,7 +104,6 @@
             var quantity = $(this).attr('max');
             var usable = $(this).val();
             var nonUsable = quantity - usable;
-            console.log(nonUsable);
             $(this).closest('tr').find('.non-usable-input').val(nonUsable);
         });
     });
