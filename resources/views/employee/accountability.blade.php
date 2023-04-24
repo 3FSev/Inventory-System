@@ -12,13 +12,14 @@
                 cellspacing="0">
                 <thead>
                     <tr>
-                        <th>WIV Number</th>
-                        <th>Date</th>
-                        <th>Item Name</th>
-                        <th>Category</th>
-                        <th>Quantity</th>
-                        <th>Unit Cost</th>
-                        <th>Amount</th>
+                        <th>WIV</th>
+                        <th>DATE</th>
+                        <th>PARTICULARS</th>
+                        <th>DETAILS</th>
+                        <th>CATEGORY</th>
+                        <th>QTY. UNIT</th>
+                        <th>UNIT COST</th>
+                        <th>AMOUNT</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,31 +32,19 @@
                                     {{$item->name}}
                                 </td>
                                 <td>
-                                    <ul>
-                                        @foreach ($pending->items as $item)
-                                            <li>{{$item->description}}</li>
-                                        @endforeach
-                                    </ul>
+                                    {{$item->description}}
                                 </td>
                                 <td>
-                                    @foreach($wiv->items as $item)
-                                    {{($item->category->name)}}<br>
-                                    @endforeach
+                                    {{($item->category->name)}}
                                 </td>
                                 <td>
-                                    @foreach($wiv->items as $item)
-                                    {{($item->pivot->quantity)}}<br>
-                                    @endforeach
+                                    {{($item->pivot->quantity)}}
                                 </td>
                                 <td>
-                                    @foreach($wiv->items as $item)
-                                    {{ number_format($item->pivot->price, 2, '.', ',') }}<br>
-                                    @endforeach
+                                    {{ number_format($item->price, 2, '.', ',') }}
                                 </td>
                                 <td>
-                                    @foreach($wiv->items as $item)
-                                    {{ number_format($item->pivot->amount, 2, '.', ',') }}<br>
-                                    @endforeach
+                                    {{ number_format($item->pivot->amount, 2, '.', ',') }}
                                 </td>
                             </tr>
                         @endforeach

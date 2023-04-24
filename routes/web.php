@@ -70,7 +70,7 @@ Route::middleware(['auth','warehouse-user'])->group(function(){
 
 //----Employee Module----//
 Route::middleware(['auth','employee-user','approved'])->group(function(){
-    Route::get('accountability', [AccountabilityController::class, 'show'])->name('accountability.show');
+    Route::get('/', [AccountabilityController::class, 'show'])->name('accountability.show');
     Route::get('pending-wiv', [AccountabilityController::class, 'pending'])->name('pending.accountability.show');
     Route::get('pending-wiv/{wiv_id}/approve', [AccountabilityController::class, 'approve'])->name('wiv.approve');
     Route::get('mrt-list', [ReturnedItemCotroller::class, 'showList'])->name('accountability.showList');

@@ -12,7 +12,7 @@
                 <span class="selected-value">Accountability</span>
             </div>
             <div class="dropdown-menu">
-                <div class="dropdown-item"><a href="accountability">List</a></div>
+                <a href="/"><div class="dropdown-item">List</a></div>
                 <a href="pending-wiv"><div class="dropdown-item">Pending</div></a>
             </div>
         </div>
@@ -22,8 +22,8 @@
                 <span class="selected-value">MRT</span>
             </div>
             <div class="dropdown-menu">
-                <div class="dropdown-item" data-value="Option 1"><a href="mrt-list">List</a></div>
-                <div class="dropdown-item" data-value="Option 2"><a href="request-mrt">Request</a></div>
+                <a href="mrt-list"><div class="dropdown-item" data-value="Option 1">List</a></div>
+                <a href="request-mrt">Request</a><div class="dropdown-item" data-value="Option 2"></div>
             </div>
         </div>
         <!-- end of dropdown -->
