@@ -9,10 +9,7 @@
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
-        <div class="logo-img">
-          <img src="/img/50 logo.png" alt="Ormeco Logo" width="50" height="50">
-        </div>
-        <div class="sidebar-brand-text mx-3">Ormeco Inventory System</div>
+        <div class="sidebar-brand-text mx-3">Ormeco Accountability System</div>
       </a>
 
       <!-- Divider -->
