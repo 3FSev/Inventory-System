@@ -33,7 +33,7 @@
   <meta name="author" content="">
 
   <title>Ormeco Accountability System</title>
-  <link rel="icon" href="">
+  <link rel="icon" href="assets/ormeco-logo.png">
 
   <!-- Custom fonts for this template-->
   <link href="../vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
