@@ -15,6 +15,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+      	//--------Role Seeder-------//
+        DB::table('roles')->insert([
+            [
+                'name' => 'Employee'
+            ],
+            [
+                'name' => 'Warehouse'
+            ],
+            [
+                'name' => 'Admin'
+            ]
+        ]);
+      
         //--------Category Seeder-------//
         DB::table('category')->insert([
             [
@@ -37,7 +50,7 @@ class DatabaseSeeder extends Seeder
         //--------Department Seeder-------//
         DB::table('department')->insert([
             [
-                'name' => 'OTHERS'
+                'name' => 'Others'
             ],
             [
                 'name' => 'OGM'
@@ -68,13 +81,13 @@ class DatabaseSeeder extends Seeder
             ]
         ]);
 
-        \App\Models\User::factory(10)->create();
+        //\App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
 
-        Items::factory(10)->create();
+        //Items::factory(10)->create();
     }
 }
