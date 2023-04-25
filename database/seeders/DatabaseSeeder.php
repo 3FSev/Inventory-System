@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Carbon\Carbon;
 use App\Models\Items;
 use App\Models\Category;
 use Illuminate\Database\Seeder;
@@ -79,6 +80,18 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'BOD'
             ]
+        ]);
+
+        //--------Role Seeder-------//
+        DB::table('users')->insert([
+            [
+                'name' => 'Admin',
+                'email' => 'warehouse.admin@gmail.com',
+                'password' => bcrypt('ormeco.admin'),
+                'role_id' => 3,
+                'dept_id' => 1,
+                'approved_at' =>  Carbon::now()
+            ],
         ]);
 
         //\App\Models\User::factory(10)->create();
