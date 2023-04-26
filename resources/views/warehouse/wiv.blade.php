@@ -27,8 +27,8 @@
                     Auditing Procedures and regulation of ORMECO and it shall be used only for my official functions and duties in the above
                     mentioned electric cooperative. <br><br>
 
-                          This is in compliance with the Energy Regulatory Commission ( ERC ) in preparation for Accounting Manual Cost
-                    submitted by ORMECO with the cut-off  date, December 31, 2014
+                          This is in compliance with the <b>Energy Regulatory Commission ( ERC )</b> in preparation for <b>Accounting Manual Cost</b>
+                    submitted by ORMECO with the <b>cut-off  date, December 31, 2014</b>
                     </p>
             </div>
             <table class="table table-bordered" id="wivTable" width="100%" cellspacing="0">
@@ -39,7 +39,6 @@
                         <th>JV#</th>
                         <th>Date</th>
                         <th>Particulars</th>
-                        <th>Details</th>
                         <th>QTY. Unit</th>
                         <th>Unit Cost</th>
                         <th>Amount</th>
@@ -64,9 +63,7 @@
                                 {{$wiv->jv_date}}
                             </td>
                             <td>
-                                {{$item->name}} <br>
-                            </td>
-                            <td>
+                                {{$item->name}}, <br>
                                 {{$item->description}}
                             </td>
                             <td>
@@ -90,7 +87,7 @@
                 </tbody>
             </table>
             <div class="table-footer">
-                <h6>Conformed : <br>
+                <h6><br>Conformed : <br>
                     &emsp;<b>{{$user->name}} </b><br>
                     &emsp;{{$user->department->name}} <br>
                     &emsp;Accountable Employee <br>

@@ -75,7 +75,7 @@
                     </div>
                     <div class="form-group">
                         <input type="number" min="1" max="999999999" class="form-control" placeholder="Price"
-                            name="price">
+                            name="price" step="any">
                     </div>
                     <div class="form-group">
                         <textarea rows="5" cols="50" class="form-control" placeholder="Description"

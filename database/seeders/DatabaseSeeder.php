@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Admin'
             ]
         ]);
-      
+
         //--------Category Seeder-------//
         DB::table('category')->insert([
             [
