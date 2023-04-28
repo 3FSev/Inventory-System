@@ -94,7 +94,7 @@
                                 <tr class="item-row">
                                     <td>
                                         <select name="item[]" class="form-control">
-                                            @foreach ($items as $item)
+                                            @foreach ($items->sortBy('name') as $item)
                                             <option value="{{ $item->id }}">{{ $item->name }}</option>
                                             @endforeach
                                         </select>

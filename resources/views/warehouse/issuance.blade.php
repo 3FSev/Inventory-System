@@ -82,7 +82,7 @@
                     <div class="form-group">
                         <label for="employee">Employee:</label>
                         <select name="user" id="user" class="form-control" required>
-                            @foreach ($users as $user)
+                            @foreach ($users->sortBy('name') as $user)
                             <option hidden></option>
                             <option value="{{ $user->id }}">{{ $user->name }}</option>
                             @endforeach
@@ -154,7 +154,7 @@
                                 <tr class="item-row">
                                     <td>
                                         <select name="item[]" class="form-control">
-                                            @foreach ($items as $item)
+                                            @foreach ($items->sortBy('name') as $item)
                                             <option value="{{ $item->id }}">{{ $item->name }}</option>
                                             @endforeach
                                         </select>
@@ -163,7 +163,7 @@
                                         <input type="number" class="form-control" name="quantity[]">
                                     </td>
                                     <td>
-                                        <button type="button" class="btn btn-danger remove-row"></button>
+                                        <button type="button" class="btn btn-danger remove-row">Remove</button>
                                     </td>
                                 </tr>
                             </tbody>

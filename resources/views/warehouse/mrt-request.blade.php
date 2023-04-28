@@ -87,7 +87,7 @@
                         <div class="col-sm-9">
                             <div class="row">
                                 <select name="user" id="user" class="form-control user-mrt" required>
-                                    @foreach ($users as $user)
+                                    @foreach ($users->sortBy('name') as $user)
                                     <option hidden></option>
                                     <option value="{{ $user->id }}">{{ $user->name }}</option>
                                     @endforeach
