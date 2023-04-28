@@ -26,9 +26,10 @@
                                 @csrf
                                 @method('DELETE')
                                 <a href="{{ route('admin.users.approve', $row->id) }}"
-                                    class="btn btn-success btn-sm">Approved</a>
-                                <input onclick="return confirm('Are you sure?')" type="submit"
-                                    class="btn btn-danger btn-sm" value="Delete" />
+                                    class="btn btn-success btn-sm"><i class="fa-solid fa-user-check"></i></a>
+                                <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger btn-sm">
+                                  <i class="fas fa-trash-alt"></i>
+                              </button>
                             </form>
                         </td>
                     </tr>

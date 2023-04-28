@@ -28,6 +28,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+<script src="https://kit.fontawesome.com/f1f65d2bf3.js" crossorigin="anonymous"></script>
 
 <!-- Custom scripts for all pages-->
 <script src="../js/sb-admin-2.js"></script>

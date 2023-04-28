@@ -65,7 +65,9 @@
                             <form method="POST" action="{{ route('wiv.item.delete', ['wiv_id' => $wiv->id, 'item_id' => $item->id]) }}">
                                 @csrf
                                 @method('DELETE')
-                                <input onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger btn-sm" value="Delete" />
+                                <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger btn-sm">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
                             </form>
                         </td>
                     </tr>

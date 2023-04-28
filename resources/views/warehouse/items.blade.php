@@ -33,9 +33,11 @@
                             <form method="POST" action="{{route('destroy', $row->id)}}">
                                 @csrf
                                 @method('DELETE')
-                                <a href="{{route('show', $row->id)}}" class="btn btn-info btn-sm">View</a>
-                                <a href="{{route('edit', $row->id)}}" class="btn btn-warning btn-sm">Edit</a>
-                                <input onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger btn-sm" value="Delete" />
+                                <a href="{{route('show', $row->id)}}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
+                                <a href="{{route('edit', $row->id)}}" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i></a>
+                                <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger btn-sm">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
                             </form>
                         </td>
                     </tr>

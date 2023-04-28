@@ -30,8 +30,10 @@
                             <form method="POST" action="{{route('admin.users.destroy', $row->id)}}">
                                 @csrf
                                 @method('DELETE')
-                                <a href="{{route('admin.users.edit', $row->id)}}" class="btn btn-warning btn-sm">Edit</a>
-                                <input onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger btn-sm" value="Delete" />
+                                <a href="{{route('admin.users.edit', $row->id)}}" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
+                                <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger btn-sm">
+                                  <i class="fas fa-trash-alt"></i>
+                              </button>
                             </form>
                         </td>
                     </tr>

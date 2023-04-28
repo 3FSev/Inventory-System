@@ -23,7 +23,7 @@
                         <td>{{$row->deleted_at}}</td>
                         <td>
                             <a href="{{ route('admin.deletedItems.recover', $row->id) }}"
-                            class="btn btn-success btn-sm">Restore</a>
+                            class="btn btn-success btn-sm"><i class="fa-solid fa-trash-can-arrow-up"></i></a>
                         </td>
                     </tr>
                     @endforeach

@@ -51,8 +51,10 @@
                             <form method="POST" action="{{route('wiv.delete', $wiv->id)}}">
                                 @csrf
                                 @method('DELETE')
-                                <a href="{{route('wiv.edit', $wiv->id)}}" class="btn btn-warning btn-sm">Edit</a>
-                                <input onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger btn-sm" value="Delete" />
+                                <a href="{{route('wiv.edit', $wiv->id)}}" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
+                                <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger btn-sm">
+                                    <i class="fas fa-trash-alt"></i>
+                                  </button>
                             </form>
                         </td>
                     </tr>
@@ -161,7 +163,7 @@
                                         <input type="number" class="form-control" name="quantity[]">
                                     </td>
                                     <td>
-                                        <button type="button" class="btn btn-danger remove-row">Remove</button>
+                                        <button type="button" class="btn btn-danger remove-row"></button>
                                     </td>
                                 </tr>
                             </tbody>
