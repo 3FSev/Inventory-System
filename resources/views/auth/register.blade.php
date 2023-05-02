@@ -11,7 +11,7 @@
                         <img src="assets/ormeco-logo.png" class="logo">
                     </div>
                     <div class="portal__wrapper__form__wrapper__title">
-                        <h1><span>ORMECO </span>Warehouse</h1>
+                        <h1><span>ORMECO </span>Accountability</h1>
                         <p>Register</p>
                     </div>
 

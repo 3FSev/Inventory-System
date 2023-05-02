@@ -85,10 +85,6 @@ class ItemsController extends Controller
     public function update(Request $request, $id){
         $item = Items::find($id);
 
-        $request->validate([
-            'name' => 'required|unique:items'
-        ]);
-
         $item->name = $request->input('name');
         $item->description = $request->input('description');
         $item->category_id = $request->input('category_id');
