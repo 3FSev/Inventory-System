@@ -5,7 +5,8 @@
         <div class="card-header py-3">
             <h4 class="m-2 font-weight-bold text-primary">Edit Item</h4>
         </div>
-        <a href="../items" type="button" class="btn btn-primary bg-gradient-primary">Back</a>
+        <a href="../items" type="button" class="btn btn-primary bg-gradient-primary"><i
+            class="fas fa-flip-horizontal fa-fw fa-share"></i>Back</a>
         <div class="card-body">
 
             <form role="form" method="POST" action="{{$item->id}}">
@@ -60,8 +61,8 @@
                         Price:
                     </div>
                     <div class="col-sm-9">
-                        <input class="form-control" name="price" value="{{$item->price}}" step="any"
-                            required>
+                        <input type="number" class="form-control" name="price" value="{{$item->price}}" step="any"
+                            min="0"required>
                     </div>
                 </div>
                 <div class="form-group row text-left text-warning">

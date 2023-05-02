@@ -3533,6 +3533,12 @@ input[type="button"].btn-block {
   vertical-align: middle;
 }
 
+.btn-modal {
+  border: solid;
+  background-color: #379237;
+  color: white;
+}
+
 .btn-group > .btn,
 .btn-group-vertical > .btn {
   position: relative;

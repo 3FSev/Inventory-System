@@ -1,13 +1,10 @@
 @include('theme.sidebar')
 <div class="card shadow mb-4">
-    <div class="card-header py-3">
-        <h4 class="m-2 font-weight-bold text-primary">Issuance&nbsp;<a href="#"
-                data-toggle="modal" data-target="#aModal" type="button"
-                class="btn btn-primary bg-gradient-primary"
-                style="border-radius: 0px;"><i class="fas fa-fw fa-plus">
-                </i>
-            </a>
-        </h4>
+    <div class="card-header py-3 d-flex align-items-center justify-content-between">
+        <h4 class="m-2 font-weight-bold text-primary">Issuance</h4>
+        <a href="#" data-toggle="modal" data-target="#aModal" type="button" class="btn btn-modal">
+            <i class="fas fa-fw fa-plus"></i> Create Issuance
+        </a>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -160,7 +157,7 @@
                                         </select>
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control" name="quantity[]">
+                                        <input type="number" class="form-control" name="quantity[]" min="1" required>
                                     </td>
                                     <td>
                                         <button type="button" class="btn btn-danger remove-row">Remove</button>

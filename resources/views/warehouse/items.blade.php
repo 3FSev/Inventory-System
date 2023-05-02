@@ -1,12 +1,10 @@
 @include('theme.sidebar')
 <div class="card shadow mb-4">
-    <div class="card-header py-3">
-        <h4 class="m-2 font-weight-bold text-primary">Items&nbsp;<a href="#" data-toggle="modal" data-target="#aModal"
-                type="button" class="btn btn-primary bg-gradient-primary" style="border-radius: 0px;"><i
-                    class="fas fa-fw fa-plus">
-                </i>
-            </a>
-        </h4>
+    <div class="card-header py-3 d-flex align-items-center justify-content-between">
+        <h4 class="m-2 font-weight-bold text-primary">Items List</h4>
+        <a href="#" data-toggle="modal" data-target="#aModal" type="button" class="btn btn-modal">
+            <i class="fas fa-fw fa-plus"></i> Create item
+        </a>
     </div>
     <div class="card-body">
         <div class="table-responsive">

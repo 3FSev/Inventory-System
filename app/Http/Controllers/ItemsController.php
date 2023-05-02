@@ -28,18 +28,26 @@ class ItemsController extends Controller
         return view('warehouse/employee', compact('users'));
     }
 
-    public function store(Request $request){
-            $item = new Items;
-            $item->name = $request->input('name');
-            $item->unit = $request->input('unit');
-            $item->description = $request->input('description');
-            $item->category_id = $request->input('category_id');
-            $item->price = $request->input('price');
-            $item->quantity = $request->input('quantity');
-            $item->save();
+    public function store(Request $request)
+{
+    $request->validate([
+        'name' => 'required|unique:items'
+    ], [
+        'name.unique' => 'Item name is already in use.',
+    ]);
 
-        return redirect()->back();
-    }
+    $item = new Items;
+    $item->name = $request->input('name');
+    $item->unit = $request->input('unit');
+    $item->description = $request->input('description');
+    $item->category_id = $request->input('category_id');
+    $item->price = $request->input('price');
+    $item->quantity = $request->input('quantity');
+    $item->save();
+
+    return redirect()->back()->with('success', 'Item created successfully');
+}
+
 
     public function destroy($id){
         Items::where('id','=',$id)->delete();
@@ -76,6 +84,11 @@ class ItemsController extends Controller
 
     public function update(Request $request, $id){
         $item = Items::find($id);
+
+        $request->validate([
+            'name' => 'required|unique:items'
+        ]);
+
         $item->name = $request->input('name');
         $item->description = $request->input('description');
         $item->category_id = $request->input('category_id');

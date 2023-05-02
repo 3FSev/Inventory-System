@@ -95,7 +95,7 @@ class IssuanceController extends Controller
     {
         $wiv = Wiv::findOrFail($request->user_id);
         $wiv->items()->detach($request->role_id);
-        return redirect()->back()->with('success', 'Role removed successfully');
+        return redirect()->back()->with('warning', 'Item removed successfully');
     }
 
     public function wivEdit($id)
@@ -110,7 +110,7 @@ class IssuanceController extends Controller
         $wiv = Wiv::findOrFail($wiv_id);
         $wiv->items()->detach($item_id);
 
-        return redirect()->back()->with('success', 'Item deleted successfully.');
+        return redirect()->back()->with('warning', 'Item deleted successfully.');
     }
 
     public function wivDelete($id)
@@ -119,6 +119,6 @@ class IssuanceController extends Controller
         $wiv->items()->detach();
         $wiv->delete();
 
-        return redirect()->back()->with('success', 'WIV deleted successfully.');
+        return redirect()->back()->with('warning', 'WIV deleted successfully.');
     }
 }

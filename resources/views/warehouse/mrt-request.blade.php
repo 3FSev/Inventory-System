@@ -1,13 +1,10 @@
 @include('theme.sidebar')
 <div class="card shadow mb-4">
-    <div class="card-header py-3">
-        <h4 class="m-2 font-weight-bold text-primary">Create MRT Ticket&nbsp;<a href="#"
-                data-toggle="modal" data-target="#aModal" type="button"
-                class="btn btn-primary bg-gradient-primary"
-                style="border-radius: 0px;"><i class="fas fa-fw fa-plus">
-                </i>
-            </a>
-        </h4>
+    <div class="card-header py-3 d-flex align-items-center justify-content-between">
+        <h4 class="m-2 font-weight-bold text-primary">MRT Request</h4>
+        <a href="#" data-toggle="modal" data-target="#aModal" type="button" class="btn btn-modal">
+            <i class="fas fa-fw fa-plus"></i> Create MRT
+        </a>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -83,15 +80,17 @@
                 <form method="POST" action="{{route('returned.store')}}" class="container-fluid" autocomplete="off">
                     @csrf
                     <div class="form-group row">
-                        <label for="riv" class="col-sm-2 col-form-label">Employee:</label>
-                        <div class="col-sm-9">
+                        <label for="employee" class="col-sm-2 col-form-label">Employee</label>
+                        <div class="col-sm-10">
                             <div class="row">
-                                <select name="user" id="user" class="form-control user-mrt" required>
-                                    @foreach ($users->sortBy('name') as $user)
-                                    <option hidden></option>
-                                    <option value="{{ $user->id }}">{{ $user->name }}</option>
-                                    @endforeach
-                                </select>
+                                <div class="col-sm-12">
+                                    <select name="user" id="user" class="form-control user-mrt" required>
+                                        @foreach ($users->sortBy('name') as $user)
+                                        <option hidden></option>
+                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
