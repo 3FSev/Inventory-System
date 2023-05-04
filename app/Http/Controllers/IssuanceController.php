@@ -108,17 +108,38 @@ class IssuanceController extends Controller
     public function wivItemDelete($wiv_id, $item_id)
     {
         $wiv = Wiv::findOrFail($wiv_id);
-        $wiv->items()->detach($item_id);
+        $pivot = $wiv->items()->where('item_id', $item_id)->first();
 
-        return redirect()->back()->with('warning', 'Item deleted successfully.');
+        if ($pivot) {
+            $quantity = $pivot->pivot->quantity;
+            $wiv->items()->detach($item_id);
+
+            $item = Items::findOrFail($item_id);
+            $item->quantity += $quantity;
+            $item->save();
+
+            return redirect()->back()->with('warning', 'Item deleted successfully. Quantity added back to items table.');
+        }
+
+        return redirect()->back()->with('error', 'Item not found.');
     }
+
 
     public function wivDelete($id)
-    {
-        $wiv = Wiv::findOrFail($id);
-        $wiv->items()->detach();
-        $wiv->delete();
+{
+    //Find the wiv and items
+    $wiv = Wiv::findOrFail($id);
+    $items = $wiv->items()->get();
+    $wiv->items()->detach();
+    $wiv->delete();
 
-        return redirect()->back()->with('warning', 'WIV deleted successfully.');
+    // Add the quantity of each item back to the items table
+    foreach ($items as $item) {
+        $item->quantity += $item->pivot->quantity;
+        $item->save();
     }
+
+    return redirect()->back()->with('warning', 'WIV deleted successfully. Quantities added back to items table.');
+}
+
 }

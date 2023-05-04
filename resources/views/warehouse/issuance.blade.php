@@ -3,7 +3,7 @@
     <div class="card-header py-3 d-flex align-items-center justify-content-between">
         <h4 class="m-2 font-weight-bold text-primary">Issuance</h4>
         <a href="#" data-toggle="modal" data-target="#aModal" type="button" class="btn btn-modal">
-            <i class="fas fa-fw fa-plus"></i> Create Issuance
+             Create Issuance
         </a>
     </div>
     <div class="card-body">

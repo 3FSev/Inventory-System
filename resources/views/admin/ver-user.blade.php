@@ -4,7 +4,7 @@
     <div class="card-header py-3 d-flex align-items-center justify-content-between">
         <h4 class="m-2 font-weight-bold text-primary">Verified Users</h4>
         <a href="#" data-toggle="modal" data-target="#aModal" type="button" class="btn btn-modal">
-          <i class="fas fa-fw fa-plus"></i> Add User
+           Add User
         </a>
     </div>
     <div class="card-body">
