@@ -75,7 +75,7 @@ class ItemsController extends Controller
     }
 
     public function edit($id){
-        $category = Category::pluck('name', 'id');
+        $category = Category::all();
         return view('warehouse/item_edit', [
             'item' => Items::find($id),
             'category' => $category
@@ -87,7 +87,7 @@ class ItemsController extends Controller
 
         $item->name = $request->input('name');
         $item->description = $request->input('description');
-        $item->category_id = $request->input('category_id');
+        $item->category_id = $request->input('category');
         $item->price = $request->input('price');
         $item->quantity = $request->input('quantity');
         $item->unit = $request->input('unit');

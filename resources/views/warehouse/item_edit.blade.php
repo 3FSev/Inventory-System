@@ -35,7 +35,11 @@
                         Category:
                     </div>
                     <div class="col-sm-9">
-                        {!! Form::select('category_id', $category, null, ['class' => 'form-control']) !!}
+                        <select name="category" id="category" class="form-control">
+                            @foreach ($category as $category)
+                                <option value="{{$category->id}}" {{ $category->id == $item->category->id ? 'selected' : '' }}>{{$category->name}}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="form-group row text-left text-warning">
