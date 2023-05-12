@@ -30,7 +30,7 @@
                           This is in compliance with the <b>Energy Regulatory Commission ( ERC )</b> in preparation for <b>Accounting Manual Cost</b>
                     submitted by ORMECO with the <b>cut-off  date, December 31, 2014</b>
                     </p>
-            </div>
+            </div><br>
             <table class="table table-bordered" id="wivTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
